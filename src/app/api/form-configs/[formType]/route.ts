@@ -8,8 +8,10 @@ type Params = { params: Promise<{ formType: string }> };
 export async function GET(_request: NextRequest, { params }: Params) {
   const { formType } = await params;
 
-  const config = await prisma.formConfig.findUnique({ where: { formType } });
-  if (!config) return NextResponse.json({ error: "Not found" }, { status: 404 });
+  let config = await prisma.formConfig.findUnique({ where: { formType } });
+  if (!config) {
+    config = await prisma.formConfig.create({ data: { formType, fields: "[]" } });
+  }
 
   return NextResponse.json(config);
 }

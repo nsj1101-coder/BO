@@ -96,7 +96,7 @@ export default function ConsultationDetailPage() {
 
         <div className="space-y-4">
           <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider">제출 데이터</p>
-          {Object.entries(item.data).map(([key, value]) => (
+          {Object.entries(typeof item.data === "string" ? (() => { try { return JSON.parse(item.data); } catch { return {}; } })() : item.data || {}).map(([key, value]) => (
             <div key={key} className="grid grid-cols-[140px_1fr] items-start gap-4">
               <label className="text-sm font-semibold text-gray-500">{key}</label>
               <p className="text-sm text-[#191F28] whitespace-pre-wrap">{value || "-"}</p>

@@ -45,12 +45,14 @@ export default function MemberDetailPage() {
     ]);
     if (memberRes.ok) {
       const m: Member = await memberRes.json();
+      const extra = typeof m.extraData === "string" ? (() => { try { return JSON.parse(m.extraData as unknown as string); } catch { return {}; } })() : m.extraData || {};
+      m.extraData = extra;
       setMember(m);
       setForm({
         name: m.name,
         email: m.email,
         phone: m.phone || "",
-        ...m.extraData,
+        ...extra,
       });
     }
     if (fieldsRes.ok) {

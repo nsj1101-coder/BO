@@ -46,7 +46,9 @@ export default function ConsultationSettingsPage() {
     const res = await fetch("/api/form-configs/consultation");
     if (res.ok) {
       const data = await res.json();
-      setFields(data.fields || []);
+      let f = data.fields || [];
+      if (typeof f === "string") try { f = JSON.parse(f); } catch { f = []; }
+      setFields(Array.isArray(f) ? f : []);
     }
     setLoading(false);
   }, []);

@@ -185,8 +185,10 @@ export default function ConsultationPage() {
     ]).then(([sections, fc]) => {
       setTopHtml(sections.top || []);
       setBottomHtml(sections.bottom || []);
-      const activeFields = (Array.isArray(fc) ? fc : fc.fields || []).filter((f: FormField) => f.isActive).sort((a: FormField, b: FormField) => a.sortOrder - b.sortOrder);
-      setFields(activeFields);
+      let raw = fc?.fields ?? fc ?? [];
+      if (typeof raw === "string") try { raw = JSON.parse(raw); } catch { raw = []; }
+      if (!Array.isArray(raw)) raw = [];
+      setFields(raw);
       setLoading(false);
     });
   }, []);

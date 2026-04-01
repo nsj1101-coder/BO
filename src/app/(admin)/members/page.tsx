@@ -37,7 +37,7 @@ export default function MembersPage() {
     const res = await fetch(`/api/members?${params}`);
     if (res.ok) {
       const data: PaginatedResponse = await res.json();
-      setMembers(data.data);
+      setMembers(data.members || data.data || []);
       setTotalPages(data.totalPages);
       setTotal(data.total);
     }

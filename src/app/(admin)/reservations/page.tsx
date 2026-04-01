@@ -39,8 +39,8 @@ export default function ReservationsPage() {
     const res = await fetch(`/api/reservations?${params}`);
     if (res.ok) {
       const data: PaginatedResponse = await res.json();
-      setItems(data.data);
-      setTotalPages(data.totalPages);
+      setItems(data.reservations || data.data || []);
+      setTotalPages(data.totalPages || 1);
     }
     setLoading(false);
   }, [page, statusFilter]);

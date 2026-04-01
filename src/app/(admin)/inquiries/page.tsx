@@ -42,8 +42,8 @@ export default function InquiriesPage() {
     const res = await fetch(`/api/inquiries?${params}`);
     if (res.ok) {
       const data: PaginatedResponse = await res.json();
-      setItems(data.data);
-      setTotalPages(data.totalPages);
+      setItems(data.inquiries || data.data || []);
+      setTotalPages(data.totalPages || 1);
     }
     setLoading(false);
   }, [page, statusFilter]);

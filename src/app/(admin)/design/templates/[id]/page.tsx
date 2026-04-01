@@ -173,7 +173,7 @@ export default function TemplateDetailPage() {
       {/* Header */}
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-3">
-          <button onClick={() => router.push("/design/templates")} className="text-gray-400 hover:text-[#191F28] transition-colors">
+          <button onClick={() => router.back()} className="text-gray-400 hover:text-[#191F28] transition-colors">
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
           </button>
           <h2 className="font-bold text-lg text-[#191F28]">{template.name}</h2>

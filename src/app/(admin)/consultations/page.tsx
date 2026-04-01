@@ -39,8 +39,8 @@ export default function ConsultationsPage() {
     const res = await fetch(`/api/consultations?${params}`);
     if (res.ok) {
       const data: PaginatedResponse = await res.json();
-      setItems(data.data);
-      setTotalPages(data.totalPages);
+      setItems(data.consultations || data.data || []);
+      setTotalPages(data.totalPages || 1);
     }
     setLoading(false);
   }, [page, statusFilter]);
