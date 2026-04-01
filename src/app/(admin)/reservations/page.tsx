@@ -31,6 +31,7 @@ export default function ReservationsPage() {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [statusFilter, setStatusFilter] = useState<StatusFilter>("all");
+  const [labelMap, setLabelMap] = useState<Record<string, string>>({});
 
   const fetchItems = useCallback(async () => {
     setLoading(true);
@@ -46,6 +47,16 @@ export default function ReservationsPage() {
   }, [page, statusFilter]);
 
   useEffect(() => { fetchItems(); }, [fetchItems]);
+
+  useEffect(() => {
+    fetch("/api/form-configs/reservation").then((r) => r.json()).then((d) => {
+      let fields = d?.fields || [];
+      if (typeof fields === "string") try { fields = JSON.parse(fields); } catch { fields = []; }
+      const map: Record<string, string> = {};
+      if (Array.isArray(fields)) fields.forEach((f: { key?: string; label?: string }) => { if (f.key && f.label) map[f.key] = f.label; });
+      setLabelMap(map);
+    }).catch(() => {});
+  }, []);
 
   const formatDate = (d: string) =>
     new Date(d).toLocaleDateString("ko-KR", { year: "numeric", month: "2-digit", day: "2-digit" });
@@ -104,7 +115,7 @@ export default function ReservationsPage() {
               {items.map((item, idx) => {
                 const parsed = typeof item.data === "string" ? (() => { try { return JSON.parse(item.data); } catch { return {}; } })() : item.data || {};
                 const dataEntries = Object.entries(parsed);
-                const preview = dataEntries.slice(0, 3).map(([k, v]) => `${k}: ${v}`).join(" / ");
+                const preview = dataEntries.slice(0, 3).map(([k, v]) => `${labelMap[k] || k}: ${v}`).join(" / ");
                 return (
                   <tr key={item.id} className="hover:bg-gray-50/50 transition-colors">
                     <td className="px-6 py-4 text-sm text-gray-400">{(page - 1) * 20 + idx + 1}</td>

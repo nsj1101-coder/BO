@@ -28,6 +28,7 @@ export default function ReservationDetailPage() {
   const [status, setStatus] = useState<string>("pending");
   const [memo, setMemo] = useState("");
   const [saving, setSaving] = useState(false);
+  const [labelMap, setLabelMap] = useState<Record<string, string>>({});
 
   const fetchItem = useCallback(async () => {
     setLoading(true);
@@ -41,7 +42,16 @@ export default function ReservationDetailPage() {
     setLoading(false);
   }, [id]);
 
-  useEffect(() => { fetchItem(); }, [fetchItem]);
+  useEffect(() => {
+    fetchItem();
+    fetch("/api/form-configs/reservation").then((r) => r.json()).then((d) => {
+      let fields = d?.fields || [];
+      if (typeof fields === "string") try { fields = JSON.parse(fields); } catch { fields = []; }
+      const map: Record<string, string> = {};
+      if (Array.isArray(fields)) fields.forEach((f: { key?: string; label?: string }) => { if (f.key && f.label) map[f.key] = f.label; });
+      setLabelMap(map);
+    }).catch(() => {});
+  }, [fetchItem]);
 
   const handleSave = async () => {
     setSaving(true);
@@ -98,7 +108,7 @@ export default function ReservationDetailPage() {
           <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider">제출 데이터</p>
           {Object.entries(typeof item.data === "string" ? (() => { try { return JSON.parse(item.data); } catch { return {}; } })() : item.data || {}).map(([key, value]) => (
             <div key={key} className="grid grid-cols-[140px_1fr] items-start gap-4">
-              <label className="text-sm font-semibold text-gray-500">{key}</label>
+              <label className="text-sm font-semibold text-gray-500">{labelMap[key] || key}</label>
               <p className="text-sm text-[#191F28] whitespace-pre-wrap">{value || "-"}</p>
             </div>
           ))}
