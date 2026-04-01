@@ -21,7 +21,8 @@ export async function PUT(request: NextRequest, { params }: Params) {
   if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const { formType } = await params;
-  const { fields } = await request.json();
+  const body = await request.json();
+  const fields = typeof body.fields === "string" ? body.fields : JSON.stringify(body.fields || []);
 
   const config = await prisma.formConfig.upsert({
     where: { formType },
