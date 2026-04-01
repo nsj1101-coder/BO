@@ -178,7 +178,11 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                         key={child.href}
                         href={child.href}
                         className={`block pl-6 pr-4 py-2.5 text-[13px] transition-all ${
-                          pathname.startsWith(child.href)
+                          (() => {
+                            const matches = visibleChildren.filter((c) => pathname === c.href || pathname.startsWith(c.href + "/"));
+                            const best = matches.sort((a, b) => b.href.length - a.href.length)[0];
+                            return best?.href === child.href;
+                          })()
                             ? "text-[#3182F6] font-semibold"
                             : "text-gray-500 hover:text-white"
                         }`}
