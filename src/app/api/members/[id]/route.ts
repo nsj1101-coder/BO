@@ -14,7 +14,11 @@ export async function GET(_request: NextRequest, { params }: Params) {
   const member = await prisma.member.findUnique({ where: { id: Number(id) } });
   if (!member) return NextResponse.json({ error: "Not found" }, { status: 404 });
 
-  return NextResponse.json(member);
+  let extraData: Record<string, string> = {};
+  try { extraData = typeof member.extraData === "string" ? JSON.parse(member.extraData) : member.extraData; } catch {}
+  if (typeof extraData === "string") try { extraData = JSON.parse(extraData); } catch { extraData = {}; }
+
+  return NextResponse.json({ ...member, extraData });
 }
 
 export async function PUT(request: NextRequest, { params }: Params) {

@@ -188,7 +188,13 @@ export default function ReservationPage() {
       let raw = fc?.fields ?? fc ?? [];
       if (typeof raw === "string") try { raw = JSON.parse(raw); } catch { raw = []; }
       if (!Array.isArray(raw)) raw = [];
-      setFields(raw);
+      setFields(raw.map((f: Record<string, unknown>) => ({
+        fieldName: f.fieldName || f.key || "",
+        fieldLabel: f.fieldLabel || f.label || "",
+        fieldType: f.fieldType || f.type || "text",
+        required: f.required || false,
+        options: f.options || "",
+      })));
       setLoading(false);
     });
   }, []);

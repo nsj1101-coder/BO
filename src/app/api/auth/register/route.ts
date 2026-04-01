@@ -19,7 +19,7 @@ export async function POST(request: Request) {
       password: hashed,
       name,
       phone: phone ?? "",
-      extraData: extraData ? JSON.stringify(extraData) : "{}",
+      extraData: typeof extraData === "string" ? extraData : JSON.stringify(extraData || {}),
     },
   });
 

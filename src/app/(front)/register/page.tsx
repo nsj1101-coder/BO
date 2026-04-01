@@ -192,8 +192,16 @@ export default function RegisterPage() {
     ]).then(([sections, mf]) => {
       setTopHtml(sections.top || []);
       setBottomHtml(sections.bottom || []);
-      const activeFields = (Array.isArray(mf) ? mf : []).filter((f: MemberField) => f.isActive).sort((a: MemberField, b: MemberField) => a.sortOrder - b.sortOrder);
-      setFields(activeFields);
+      const activeFields = (Array.isArray(mf) ? mf : []).filter((f: Record<string, unknown>) => f.isActive).sort((a: Record<string, unknown>, b: Record<string, unknown>) => (a.sortOrder as number) - (b.sortOrder as number));
+      setFields(activeFields.map((f: Record<string, unknown>) => ({
+        fieldName: (f.fieldName || f.fieldKey || f.key || "") as string,
+        fieldLabel: (f.fieldLabel || f.label || "") as string,
+        fieldType: (f.fieldType || f.type || "text") as string,
+        required: (f.required || false) as boolean,
+        options: (f.options || "") as string,
+        isActive: true,
+        sortOrder: (f.sortOrder || 0) as number,
+      })));
       setLoading(false);
     });
   }, []);
