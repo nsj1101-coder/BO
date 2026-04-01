@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Refine Clinic</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+  <style>
+    :root {
+      --color-bg-warm: #FBF6F1;
+      --color-bg-dark: #201814;
+      --color-text-dark: #1C1D1C;
+      --color-text-body: #555555;
+      --color-text-muted: #666666;
+      --color-text-black-80: #000000CC;
+      --color-accent-beige: #B8A99A;
+      --color-divider: #1C1D1C1A;
+      --color-badge-bg: #00000033;
+      --color-badge-border: #FFFFFF80;
+    }
+    body {
+      font-family: 'Pretendard', sans-serif;
+      margin: 0;
+    }
+    .font-montserrat { font-family: 'Montserrat', sans-serif; }
+    .font-pretendard { font-family: 'Pretendard', sans-serif; }
+  </style>
+</head>
+<body>
+
+<!-- ================================================================ -->
+<!-- SECTION 1: About / Philosophy Hero                               -->
+<!-- ================================================================ -->
+<div class="w-full flex flex-col items-center justify-center px-[120px] py-[80px] relative" style="min-height:490px;background:rgba(32,24,20,0.78)">
+
+  <!-- Subtitle -->
+  <span class="font-montserrat text-[var(--color-accent-beige)] text-base font-semibold tracking-[4px] text-center mb-[30px]">[ REFINE PHILOSOPHY ]</span>
+
+  <!-- Title Block -->
+  <div class="flex flex-col items-center w-full max-w-[864px]">
+    <h2 class="text-white text-[60px] font-bold leading-[1.5] text-center font-pretendard">시간이 흘러도 변치 않는 가치,</h2>
+    <div class="flex items-center justify-center w-full flex-wrap">
+      <span class="text-white text-[60px] font-bold leading-[1.5] font-pretendard">본연의 아름다움을 </span>
+      <span class="text-[#F2E7DA] text-[60px] font-bold leading-[1.5] font-montserrat">Refine</span>
+      <span class="text-white text-[60px] font-bold leading-[1.5] font-pretendard"> 하다.</span>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ================================================================ -->
+<!-- SECTION 2: Doctor Profile                                        -->
+<!-- ================================================================ -->
+<div class="w-full bg-[var(--color-bg-warm)] flex gap-[50px] px-[120px] py-[60px]" style="min-height:1000px">
+
+  <!-- Left: Doctor Photo -->
+  <div class="relative w-[774px] shrink-0 overflow-hidden bg-[#E8E4DE] rounded">
+    <img src="img/refine/OA0mZ.png" alt="박상선 원장" class="w-full h-auto object-cover">
+  </div>
+
+  <!-- Right: Doctor Info -->
+  <div class="flex flex-col w-[543px] pt-[99px]">
+
+    <!-- Name Row -->
+    <div class="flex items-start justify-between w-full">
+      <div class="flex flex-col gap-2 w-[223px]">
+        <span class="font-montserrat text-[var(--color-text-muted)] text-base tracking-[0.4px] leading-[0.94]">Chief Director</span>
+        <span class="font-pretendard text-[var(--color-text-dark)] text-[56px] font-semibold leading-[0.86] tracking-[-0.85px]">박상선</span>
+      </div>
+      <!-- R Logo (opacity 10%) -->
+      <div class="w-[106px] h-[108px] opacity-10 overflow-hidden">
+        <img src="img01.png" alt="Refine Logo" class="w-full h-full object-contain">
+      </div>
+    </div>
+
+    <!-- Description -->
+    <div class="mt-3 py-4 border-b border-[var(--color-divider)]">
+      <p class="text-[var(--color-text-body)] text-sm leading-[1.6] tracking-[0.32px] opacity-50">개인의 피부가 가진 본래의 구조와 결을 깊이 이해하고,<br>이를 온전히 보존하면서 최적의 아름다움을 이끌어내는 것을<br>가장 중요한 목표로 삼습니다.</p>
+    </div>
+
+    <!-- Career: Current -->
+    <div class="py-3 border-b border-[var(--color-divider)]">
+      <p class="text-[var(--color-text-body)] text-base font-semibold leading-[1.7] tracking-[0.32px]">(현) Refine 원장</p>
+      <p class="text-[var(--color-text-body)] text-base leading-[1.7] tracking-[0.32px]">(전) 올림피움채움의원 강남점 원장</p>
+      <p class="text-[var(--color-text-body)] text-base leading-[1.7] tracking-[0.32px]">(전) 다시봄날의원 성신여대점 원장</p>
+      <p class="text-[var(--color-text-body)] text-base leading-[1.7] tracking-[0.32px]">(전) 밴스의원 대전둔산점 원장</p>
+      <p class="text-[var(--color-text-body)] text-base leading-[1.7] tracking-[0.32px]">(전) 톡스앤필 광주점 원장</p>
+    </div>
+
+    <!-- Education -->
+    <div class="py-3 border-b border-[var(--color-divider)]">
+      <p class="text-[var(--color-text-body)] text-base leading-[1.7] tracking-[0.32px]">연세대학교</p>
+      <p class="text-[var(--color-text-body)] text-base leading-[1.7] tracking-[0.32px]">충남의학전문대학원</p>
+    </div>
+
+    <!-- Academic Roles -->
+    <div class="py-3 border-b border-[var(--color-divider)]">
+      <p class="text-[var(--color-text-body)] text-base leading-[1.7] tracking-[0.32px]">국제미용항노화학회 학술이사</p>
+      <p class="text-[var(--color-text-body)] text-base leading-[1.7] tracking-[0.32px]">미용성형레이저학회 학술이사</p>
+      <p class="text-[var(--color-text-body)] text-base leading-[1.7] tracking-[0.32px]">쁘띠성형에스테틱포럼 부회장</p>
+    </div>
+
+    <!-- Membership 1 -->
+    <div class="py-3 border-b border-[var(--color-divider)]">
+      <p class="text-[var(--color-text-body)] text-base leading-[1.7] tracking-[0.32px]">비만연구의사회 정회원</p>
+    </div>
+
+    <!-- Membership 2 -->
+    <div class="py-3 border-b border-[var(--color-divider)]">
+      <p class="text-[var(--color-text-body)] text-base leading-[1.7] tracking-[0.32px]">대한비만미용학회 정회원</p>
+      <p class="text-[var(--color-text-body)] text-base leading-[1.7] tracking-[0.32px]">대한미용성형레이저 정회원</p>
+      <p class="text-[var(--color-text-body)] text-base leading-[1.7] tracking-[0.32px]">대한필러학회 정회원</p>
+    </div>
+
+    <!-- Advisory -->
+    <div class="py-3">
+      <p class="text-[var(--color-text-body)] text-base leading-[1.7] tracking-[0.32px]">로얄필러 자문의</p>
+      <p class="text-[var(--color-text-body)] text-base leading-[1.7] tracking-[0.32px]">매직실 자문의</p>
+      <p class="text-[var(--color-text-body)] text-base leading-[1.7] tracking-[0.32px]">울트라브이실 자문의</p>
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- ================================================================ -->
+<!-- SECTION 3: All-Depth Lifting                                     -->
+<!-- ================================================================ -->
+<div class="w-full bg-[var(--color-bg-warm)] flex flex-col items-center gap-12 px-[50px] pt-[100px] pb-[80px]">
+
+  <!-- Header -->
+  <div class="flex flex-col items-center gap-[30px]">
+    <span class="font-montserrat text-[var(--color-accent-beige)] text-base font-semibold tracking-[4px] text-center">[ ALL-DEPTH LIFTING ]</span>
+    <h2 class="font-pretendard text-[#222222] text-[46px] font-bold leading-[1] text-center">올 뎁스 리프팅</h2>
+    <p class="font-pretendard text-[var(--color-text-muted)] text-base leading-[1] text-center">피부의 겉부터 근육층까지, 최적의 조합으로 설계되는 올뎁스 리프팅</p>
+  </div>
+
+  <!-- 4 Cards Row -->
+  <div class="flex gap-5 w-full max-w-[1820px]">
+
+    <!-- Card 1: Epidermis & Dermis -->
+    <div class="flex-1 flex flex-col gap-5">
+      <div class="w-full h-[460px] rounded-lg overflow-hidden">
+        <img src="img/refine/DBLj1.png" alt="Epidermis & Dermis" class="w-full h-full object-cover">
+      </div>
+      <div class="flex items-center justify-center w-[145px] h-[39px] rounded bg-[var(--color-badge-bg)] border border-[var(--color-badge-border)]">
+        <span class="font-pretendard text-white text-base font-medium">프리미엄 리프팅</span>
+      </div>
+      <h3 class="font-montserrat text-black text-[52px] font-medium leading-[1.25]">Epidermis<br>& Dermis</h3>
+      <span class="font-pretendard text-[var(--color-accent-beige)] text-[22px] font-medium leading-[1.5]">피부결과 탄력 개선</span>
+      <p class="font-pretendard text-[var(--color-text-black-80)] text-lg leading-[1.8]">프리미엄 리프팅으로 완성하는 촘촘한 피부결과 탄력</p>
+      <div class="flex flex-col gap-0 font-pretendard text-[var(--color-text-black-80)] text-lg font-light leading-[1.67]">
+        <div class="flex gap-2.5"><span class="w-[30px] shrink-0 text-center">•</span><span>겉으로 보이는 잔주름을 매끄럽게 정돈합니다.</span></div>
+        <div class="flex gap-2.5"><span class="w-[30px] shrink-0 text-center">•</span><span>피부 속 콜라겐 생성을 유도하여 얇아진 피부 본연의 힘과 윤기를 되찾아줍니다.</span></div>
+      </div>
+    </div>
+
+    <!-- Card 2: Fat -->
+    <div class="flex-1 flex flex-col gap-5">
+      <div class="w-full h-[460px] rounded-lg overflow-hidden">
+        <img src="img/refine/kpfOs.png" alt="Fat" class="w-full h-full object-cover">
+      </div>
+      <div class="flex items-center justify-center w-[145px] h-[39px] rounded bg-[var(--color-badge-bg)] border border-[var(--color-badge-border)]">
+        <span class="font-pretendard text-white text-base font-medium">프리미엄 리프팅</span>
+      </div>
+      <h3 class="font-montserrat text-black text-[52px] font-medium leading-[1.25]">Fat</h3>
+      <span class="font-pretendard text-[var(--color-accent-beige)] text-[22px] font-medium leading-[1.5]">얼굴의 무게감을 덜어내고 라인을 탄탄하게</span>
+      <p class="font-pretendard text-[var(--color-text-black-80)] text-lg leading-[1.8]">지방을 비워내, 슬림하고 매끄러운 윤곽선</p>
+      <div class="flex flex-col gap-0 font-pretendard text-[var(--color-text-black-80)] text-lg font-light leading-[1.8]">
+        <div class="flex gap-2.5"><span class="w-[30px] shrink-0 text-center">•</span><span>탄력을 저하시키는 불필요하고 무거운 처진 지방을 정돈합니다.</span></div>
+        <div class="flex gap-2.5"><span class="w-[30px] shrink-0 text-center">•</span><span>둔탁해진 턱선과 심부볼의 부피를 줄여 슬림하고 매끄러운 윤곽 라인을 만듭니다.</span></div>
+      </div>
+    </div>
+
+    <!-- Card 3: Fascia -->
+    <div class="flex-1 flex flex-col gap-5">
+      <div class="w-full h-[460px] rounded-lg overflow-hidden">
+        <img src="img/refine/K4UGb.png" alt="Fascia" class="w-full h-full object-cover">
+      </div>
+      <div class="flex items-center justify-center w-[145px] h-[39px] rounded bg-[var(--color-badge-bg)] border border-[var(--color-badge-border)]">
+        <span class="font-pretendard text-white text-base font-medium">프리미엄 리프팅</span>
+      </div>
+      <h3 class="font-montserrat text-black text-[52px] font-medium leading-[1.25]">Fascia</h3>
+      <span class="font-pretendard text-[var(--color-accent-beige)] text-[22px] font-medium leading-[1.5]">피부의 탄력을 끌어올리는</span>
+      <p class="font-pretendard text-[var(--color-text-black-80)] text-lg leading-[1.8]">프리미엄 리프팅으로 완성하는 촘촘한 피부결과 탄력</p>
+      <div class="flex flex-col gap-0 font-pretendard text-[var(--color-text-black-80)] text-lg font-light leading-[1.8]">
+        <div class="flex gap-2.5"><span class="w-[30px] shrink-0 text-center">•</span><span>피부를 지지하는 뼈대 역할을 하는 근막층을 강력하게 타겟팅합니다.</span></div>
+        <div class="flex gap-2.5"><span class="w-[30px] shrink-0 text-center">•</span><span>피부 깊은 곳에서부터 처진 조직을 단단하게 위로 견인하여 근본적인 리프팅을 실현합니다.</span></div>
+      </div>
+    </div>
+
+    <!-- Card 4: Muscle -->
+    <div class="flex-1 flex flex-col gap-5">
+      <div class="w-full h-[460px] rounded-lg overflow-hidden">
+        <img src="img/refine/R5miT.png" alt="Muscle" class="w-full h-full object-cover">
+      </div>
+      <div class="flex items-center justify-center w-[145px] h-[39px] rounded bg-[var(--color-badge-bg)] border border-[var(--color-badge-border)]">
+        <span class="font-pretendard text-white text-base font-medium">프리미엄 리프팅</span>
+      </div>
+      <h3 class="font-montserrat text-black text-[52px] font-medium leading-[1.25]">Muscle</h3>
+      <span class="font-pretendard text-[var(--color-accent-beige)] text-[22px] font-medium leading-[1.5]">자연스러운 리프팅 효과가 지속되도록</span>
+      <p class="font-pretendard text-[var(--color-text-black-80)] text-lg leading-[1.8]">프리미엄 리프팅으로 완성하는 촘촘한 피부결과 탄력</p>
+      <div class="flex flex-col gap-0 font-pretendard text-[var(--color-text-black-80)] text-lg font-light leading-[1.8]">
+        <div class="flex gap-2.5"><span class="w-[30px] shrink-0 text-center">•</span><span>개개인의 표정 근육 움직임과 방향까지 고려하여 디자인합니다.</span></div>
+        <div class="flex gap-2.5"><span class="w-[30px] shrink-0 text-center">•</span><span>시술 후에도 표정이 어색하지 않으며, 끌어올린 탄력이 더 오랜 기간 단단하게 유지되도록 고정력을 강화합니다.</span></div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>

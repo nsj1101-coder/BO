@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Section - Brant Media</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-accent-teal: #0891B2;
+      --color-text-dark: #1E1B4B;
+      --color-text-muted: #64748B;
+      --color-border-light: #E2E8F0;
+      --color-white: #FFFFFF;
+    }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Section - Brant Media -->
+<div class="w-full bg-[var(--color-white)] flex flex-col gap-6 p-[60px]">
+
+  <!-- Top Row: Title + See All Button -->
+  <div class="flex items-center justify-between w-full">
+    <span class="text-[var(--color-text-dark)] text-4xl font-extrabold">Brant media</span>
+    <a href="#" class="flex items-center gap-2 bg-[var(--color-accent-teal)] text-[var(--color-white)] text-sm font-semibold rounded-md px-6 py-3 hover:opacity-90 transition-opacity">
+      <span>전체 보기</span>
+      <span>→</span>
+    </a>
+  </div>
+
+  <!-- Arrow Navigation -->
+  <div class="flex gap-2">
+    <button class="flex items-center justify-center w-8 h-8 rounded-full border border-[#1A1A1A] text-[var(--color-text-dark)] text-sm hover:bg-gray-100 transition-colors">←</button>
+    <button class="flex items-center justify-center w-8 h-8 rounded-full border border-[#1A1A1A] text-[var(--color-text-dark)] text-sm hover:bg-gray-100 transition-colors">→</button>
+  </div>
+
+  <!-- Cards Row -->
+  <div class="flex gap-6 w-full">
+
+    <!-- Card 1 -->
+    <div class="flex-1 flex flex-col gap-4">
+      <div class="w-full h-[280px] rounded-lg overflow-hidden bg-gray-200">
+        <img
+          src="https://images.unsplash.com/photo-1565530649044-c56b148b4db6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixlib=rb-4.1.0&q=80&w=1080"
+          alt="Brant GRP1013"
+          class="w-full h-full object-cover"
+        >
+      </div>
+      <span class="text-[var(--color-text-dark)] text-base font-semibold">Brant GRP1013.00.0001: 화이트 PU 베이스코트</span>
+      <div class="flex items-center justify-between w-full">
+        <span class="rounded border border-[#999999] px-3.5 py-1.5 text-[var(--color-text-dark)] text-xs font-medium">제품 영상</span>
+        <a href="#" class="flex items-center gap-2 bg-[var(--color-accent-teal)] text-[var(--color-white)] text-[13px] font-semibold rounded-md px-5 py-2.5 hover:opacity-90 transition-opacity">
+          <span>지금 보기</span>
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="flex-1 flex flex-col gap-4">
+      <div class="w-full h-[280px] rounded-lg overflow-hidden bg-gray-200">
+        <img
+          src="https://images.unsplash.com/photo-1619759247130-4e7a70f2fe27?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixlib=rb-4.1.0&q=80&w=1080"
+          alt="Brant GRP1073"
+          class="w-full h-full object-cover"
+        >
+      </div>
+      <span class="text-[var(--color-text-dark)] text-base font-semibold">Brant GRP1073.00.0001: 화이트 PU 베이스코트</span>
+      <div class="flex items-center justify-between w-full">
+        <span class="rounded border border-[#999999] px-3.5 py-1.5 text-[var(--color-text-dark)] text-xs font-medium">제품 영상</span>
+        <a href="#" class="flex items-center gap-2 bg-[var(--color-accent-teal)] text-[var(--color-white)] text-[13px] font-semibold rounded-md px-5 py-2.5 hover:opacity-90 transition-opacity">
+          <span>지금 보기</span>
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>

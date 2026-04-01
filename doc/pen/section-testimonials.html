@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Section - Testimonials</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'dm': ['"DM Sans"', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    :root {
+      --color-accent-teal: #0891B2;
+      --color-text-dark: #1E1B4B;
+      --color-text-muted: #64748B;
+      --color-border-light: #E2E8F0;
+      --color-white: #FFFFFF;
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-white px-[60px] py-[80px] flex flex-col items-center gap-12 font-dm">
+    <!-- Header -->
+    <div class="w-full flex flex-col gap-4">
+      <span class="text-[#0891B2] text-sm font-semibold tracking-[2px]">후기</span>
+      <h2 class="text-[#1E1B4B] text-5xl font-bold tracking-[-1.5px]">전 세계 의료 전문가들이 신뢰합니다</h2>
+    </div>
+
+    <!-- Cards Row -->
+    <div class="w-full flex flex-row gap-6">
+      <!-- Card 1 -->
+      <div class="flex-1 bg-white rounded-xl border border-slate-200 p-8 flex flex-col gap-5">
+        <span class="text-[#0891B2] text-base tracking-[2px]">★ ★ ★ ★ ★</span>
+        <p class="text-[#1E1B4B] text-[15px] leading-[1.7]">"전체 과정이 매끄러웠습니다. 적합한 심장외과 프로그램을 찾는 것부터 호텔 예약까지 — 모든 것이 처리되었습니다."</p>
+        <div class="flex items-center gap-3">
+          <div class="w-11 h-11 rounded-full bg-[#0891B2] flex items-center justify-center text-white text-base font-semibold shrink-0">A</div>
+          <div class="flex flex-col">
+            <span class="text-[#1E1B4B] text-[15px] font-semibold">Dr. Aidar Suleimenov</span>
+            <span class="text-[#64748B] text-[13px]">심장내과 전문의 · 카자흐스탄 알마티</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="flex-1 bg-white rounded-xl border border-slate-200 p-8 flex flex-col gap-5">
+        <span class="text-[#0891B2] text-base tracking-[2px]">★ ★ ★ ★ ★</span>
+        <p class="text-[#1E1B4B] text-[15px] leading-[1.7]">"의료 관광 에이전시로서, MediW가 전체 업무 흐름을 간소화해 주었습니다. 고객 관리와 병원 협력이 수월해졌습니다."</p>
+        <div class="flex items-center gap-3">
+          <div class="w-11 h-11 rounded-full bg-[#0891B2] flex items-center justify-center text-white text-base font-semibold shrink-0">M</div>
+          <div class="flex flex-col">
+            <span class="text-[#1E1B4B] text-[15px] font-semibold">Marina Kozlova</span>
+            <span class="text-[#64748B] text-[13px]">CEO, MedTravel Agency · 모스크바</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="flex-1 bg-white rounded-xl border border-slate-200 p-8 flex flex-col gap-5">
+        <span class="text-[#0891B2] text-base tracking-[2px]">★ ★ ★ ★ ★</span>
+        <p class="text-[#1E1B4B] text-[15px] leading-[1.7]">"세브란스에서의 척추수술 참관은 세계적인 수준이었습니다. 컨시어지 지원 덕분에 프리미엄 경험이었습니다."</p>
+        <div class="flex items-center gap-3">
+          <div class="w-11 h-11 rounded-full bg-[#D97706] flex items-center justify-center text-white text-base font-semibold shrink-0">B</div>
+          <div class="flex flex-col">
+            <span class="text-[#1E1B4B] text-[15px] font-semibold">Dr. Batbayar Enkhbat</span>
+            <span class="text-[#64748B] text-[13px]">정형외과 전문의 · 울란바토르</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

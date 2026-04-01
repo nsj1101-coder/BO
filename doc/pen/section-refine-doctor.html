@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Section - Doctor</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+  <style>
+    :root {
+      --color-section-bg: #FBF6F1;
+      --color-text-dark: #1A1A1A;
+      --color-text-body: #555555;
+      --color-subtitle: #888888;
+      --color-divider: #1C1D1C1A;
+    }
+    body { margin: 0; }
+  </style>
+</head>
+<body>
+
+<!-- Section - Doctor -->
+<div class="w-full bg-[var(--color-section-bg)] flex gap-[50px] px-[120px] py-[60px]" style="min-height:1000px">
+
+  <!-- Left: Doctor Photo -->
+  <div class="relative w-[774px] shrink-0" style="min-height:978px">
+    <!-- Photo placeholder - 원본은 Container.png + generated image overlay -->
+    <div class="absolute top-[-109px] left-0 w-[774px] h-[978px] rounded bg-gray-300 overflow-hidden">
+      <img
+        src="Container.png"
+        alt="Doctor Photo"
+        class="w-full h-full object-cover"
+      >
+    </div>
+    <!-- Spacer for layout -->
+    <div class="w-[774px] h-[10px]"></div>
+  </div>
+
+  <!-- Right: Doctor Info -->
+  <div class="flex flex-col gap-3 w-[543px]">
+
+    <!-- Name Row -->
+    <div class="flex items-center justify-between w-full">
+      <div class="flex flex-col justify-between w-[310px]">
+        <span class="text-[var(--color-subtitle)] text-sm" style="font-family:'Montserrat',sans-serif">Chief Director</span>
+        <span class="text-[var(--color-text-dark)] text-[56px] font-semibold" style="font-family:'Pretendard',sans-serif">박상선</span>
+      </div>
+      <!-- Logo/Signature image -->
+      <div class="w-[96px] h-[98px] bg-gray-200 overflow-hidden">
+        <img src="Group10.png" alt="Signature" class="w-full h-full object-cover">
+      </div>
+    </div>
+
+    <!-- Description -->
+    <p class="text-[var(--color-text-body)] text-sm leading-[1.8] opacity-50 w-full" style="font-family:'Pretendard',sans-serif">개인의 피부가 가진 본래의 구조와 결을 깊이 이해하고,<br>미를 온전히 보존하면서 최적의 아름다움을 이끌어내는 것을<br>가장 중요한 목표로 삼습니다.</p>
+
+    <!-- Career Group -->
+    <div class="flex flex-col gap-3 w-full" style="font-family:'Pretendard',sans-serif">
+
+      <!-- Divider 1 -->
+      <div class="w-full h-px bg-[var(--color-divider)]"></div>
+
+      <!-- Current Role -->
+      <div class="flex flex-col w-full">
+        <span class="text-[var(--color-text-body)] text-base font-semibold leading-[1.8]">(현) Refine 원장</span>
+        <span class="text-[var(--color-text-body)] text-base leading-[1.8]">(전) 올림피흉체동의원 강남점 원장<br>(전) 다시봄널의원 성신여대점 원장<br>(전) 벤스의원 대전둔산점 원장<br>(전) 톡스앤필 광주점 원장</span>
+      </div>
+
+      <!-- Divider 2 -->
+      <div class="w-full h-px bg-[var(--color-divider)]"></div>
+
+      <!-- Education -->
+      <span class="text-[var(--color-text-body)] text-base leading-[1.8]">• 연세대학교<br>• 충남의학전문대학원</span>
+
+      <!-- Divider 3 -->
+      <div class="w-full h-px bg-[var(--color-divider)]"></div>
+
+      <!-- Academic -->
+      <span class="text-[var(--color-text-body)] text-base leading-[1.8]">• 국제미용항노화학회 학술이사<br>• 미용성형레이저학회 학술이사<br>• 쁘띠성형에스테틱포럼 부회장</span>
+
+      <!-- Divider 4 -->
+      <div class="w-full h-px bg-[var(--color-divider)]"></div>
+
+      <!-- Memberships -->
+      <span class="text-[var(--color-text-body)] text-base leading-[1.8]">• 비만연구의사회 정회원<br>• 대한비만미용학회 정회원<br>• 대한미용성형레이저 정회원<br>• 대한필러학회 정회원</span>
+
+      <!-- Divider 5 -->
+      <div class="w-full h-px bg-[var(--color-divider)]"></div>
+
+      <!-- Advisory -->
+      <span class="text-[var(--color-text-body)] text-base leading-[1.8]">• 로앨러 자문의<br>• 매직실 자문의<br>• 울트라브이실 자문의</span>
+
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>

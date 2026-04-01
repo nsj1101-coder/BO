@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lifting Treatments</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+  <style>
+    body { font-family: 'Pretendard', sans-serif; margin: 0; }
+    .font-montserrat { font-family: 'Montserrat', sans-serif; }
+    html { scroll-behavior: smooth; }
+    .tab-item { cursor: pointer; transition: all 0.3s ease; }
+    .tab-item.active { border-bottom: 4px solid #1C1614; color: #1C1614; font-weight: 700; }
+    .tab-item:not(.active) { border-bottom: 1px solid rgba(28,22,20,0.2); color: #B8A99A; font-weight: 500; }
+  </style>
+</head>
+<body>
+
+<div class="w-full bg-[#FCFBF9]">
+
+  <!-- ===== Tab Navigation (Sticky) ===== -->
+  <div class="w-full bg-[#FCFBF9] sticky top-0 z-10 flex" id="tabBar">
+    <div class="tab-item active flex-1 h-[100px] flex items-center justify-center text-xl" data-target="sec-density">덴서티</div>
+    <div class="tab-item flex-1 h-[100px] flex items-center justify-center text-xl" data-target="sec-onda">온다</div>
+    <div class="tab-item flex-1 h-[100px] flex items-center justify-center text-xl" data-target="sec-shurink">슈링크</div>
+    <div class="tab-item flex-1 h-[100px] flex items-center justify-center text-xl" data-target="sec-potenza">포텐자</div>
+  </div>
+
+  <!-- ===== DENSITY ===== -->
+  <div class="flex items-center gap-[80px] px-[326px] pt-[80px] pb-[100px]" id="sec-density">
+    <!-- Image LEFT -->
+    <div class="w-[500px] h-[896px] shrink-0 bg-[#E8E4DE] overflow-hidden">
+      <img src="density.png" alt="덴서티" class="w-full h-full object-cover">
+    </div>
+    <!-- Content RIGHT -->
+    <div class="flex-1 relative" style="min-height:661px">
+      <span class="font-montserrat text-[#B8A99A] text-base font-light leading-[1.5] absolute top-0 left-0">High-Intensity Focused Ultrasound</span>
+      <h3 class="font-montserrat text-[#504945] text-[64px] font-bold tracking-[-1px] absolute top-[39px] left-0" style="line-height:0.84">DENSITY</h3>
+      <span class="text-[#B5B0AC] text-[32px] font-medium tracking-[-1px] absolute top-[108px] left-0" style="line-height:1.69">덴서티</span>
+
+      <p class="text-[#4A3F3A] text-xl leading-[1.3] absolute top-[189px] left-0">"피부 속 빈틈을 콜라겐으로 채워 완성하는 촘촘한 탄력, 덴서티(DENSITY) 리프팅"</p>
+      <p class="text-[#6E6560] text-lg font-light leading-[1.6] max-w-[667px] absolute top-[227px] left-0">단순히 겉피부만 당기는 것이 아닙니다. 6.78MHz의 강력한 고주파(RF) 에너지를 이용해 노화로 인해 얇아진 진피층에 새로운 콜라겐 생성을 유도하고, 무너진 페이스 라인을 매끄럽고 단단하게 재건하는 프리미엄 탄력 리프팅입니다.</p>
+
+      <!-- Info Cards -->
+      <div class="flex gap-5 absolute top-[334px] left-0">
+        <div class="flex flex-col gap-3 bg-[#FBF6F1] p-2.5">
+          <span class="font-montserrat text-[#B8A99A] text-xs font-medium tracking-[2px] leading-[1.5]">시술시간</span>
+          <span class="text-[#504945] text-base font-medium leading-[1.5]">30분 ~ 40분</span>
+        </div>
+        <div class="flex flex-col gap-3 bg-[#FBF6F1] p-2.5">
+          <span class="font-montserrat text-[#B8A99A] text-xs font-medium tracking-[2px] leading-[1.5]">마취 여부</span>
+          <span class="text-[#504945] text-base font-medium leading-[1.5]">크림 마취</span>
+        </div>
+        <div class="flex flex-col gap-3 bg-[#FBF6F1] p-2.5">
+          <span class="font-montserrat text-[#B8A99A] text-xs font-medium tracking-[2px] leading-[1.5]">회복 기간</span>
+          <span class="text-[#504945] text-base font-medium leading-[1.5]">즉시 일상생활 가능</span>
+        </div>
+        <div class="flex flex-col gap-3 bg-[#FBF6F1] p-2.5">
+          <span class="font-montserrat text-[#B8A99A] text-xs font-medium tracking-[2px] leading-[1.5]">추천/유지</span>
+          <span class="text-[#504945] text-base font-medium leading-[1.5]">6개월 ~ 1년</span>
+        </div>
+      </div>
+
+      <p class="text-[#4A3F3A] text-xl leading-[1.3] absolute top-[464px] left-0">"피부 속을 고주파 열로 채워 콜라겐 밀도 증가"</p>
+
+      <div class="flex flex-col gap-5 max-w-[689px] absolute top-[502px] left-0">
+        <p class="text-[#6E6560] text-lg font-light leading-[1.6]">강력한 고주파 에너지를 진피층 깊숙이 전달합니다.</p>
+        <p class="text-[#6E6560] text-lg font-light leading-[1.6] max-w-[612px]">열 자극을 통해 느슨해진 콜라겐을 수축시키고, 새로운 콜라겐 생성을 유도해 피부 속을 촘촘하게 채웁니다.</p>
+      </div>
+
+      <div class="flex gap-3 absolute top-[629px] left-0">
+        <span class="font-montserrat text-[#B8A99A] text-base font-medium border border-[#B8A99A] rounded px-3.5 py-2">Skin Tightening</span>
+        <span class="font-montserrat text-[#B8A99A] text-base font-medium border border-[#B8A99A] rounded px-3.5 py-2">Contouring</span>
+        <span class="font-montserrat text-[#B8A99A] text-base font-medium border border-[#B8A99A] rounded px-3.5 py-2">Texture Improvement</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== ONDA ===== -->
+  <div class="flex items-center gap-[80px] px-[326px] py-[100px]" id="sec-onda">
+    <!-- Content LEFT -->
+    <div class="flex-1 relative" style="min-height:690px">
+      <span class="font-montserrat text-[#B8A99A] text-base font-light leading-[1.5] absolute top-0 left-0">Microwave RF Technology</span>
+      <h3 class="font-montserrat text-[#504945] text-[64px] font-bold tracking-[-1px] absolute top-[39px] left-0" style="line-height:0.84">ONDA</h3>
+      <span class="text-[#B5B0AC] text-[32px] font-medium tracking-[-1px] absolute top-[108px] left-0" style="line-height:1.69">온다</span>
+      <p class="text-[#4A3F3A] text-xl leading-[1.3] absolute top-[189px] left-0">"통증은 줄이고, 탄력과 윤곽은 동시에 잡는 극초음파, 온다(ONDA) 리프팅"</p>
+      <p class="text-[#6E6560] text-lg font-light leading-[1.6] max-w-[667px] absolute top-[227px] left-0">불필요한 볼륨은 줄이고 피부의 밀도는 높입니다. 특허받은 마이크로웨이브(극초음파) 에너지를 이용하여 표피의 손상과 통증을 최소화하면서, 지방층을 감소시키고 진피층의 콜라겐을 리모델링하는 프리미엄 윤곽 타이트닝 시술입니다.</p>
+      <div class="flex gap-5 absolute top-[334px] left-0">
+        <div class="flex flex-col gap-3 bg-[#FBF6F1] p-2.5">
+          <span class="font-montserrat text-[#B8A99A] text-xs font-medium tracking-[2px]">시술시간</span>
+          <span class="text-[#504945] text-base font-medium">20분 ~ 30분</span>
+        </div>
+        <div class="flex flex-col gap-3 bg-[#FBF6F1] p-2.5">
+          <span class="font-montserrat text-[#B8A99A] text-xs font-medium tracking-[2px]">마취 여부</span>
+          <span class="text-[#504945] text-base font-medium">불필요 (통증 거의 없음)</span>
+        </div>
+        <div class="flex flex-col gap-3 bg-[#FBF6F1] p-2.5">
+          <span class="font-montserrat text-[#B8A99A] text-xs font-medium tracking-[2px]">회복 기간</span>
+          <span class="text-[#504945] text-base font-medium">즉시 일상생활 가능</span>
+        </div>
+        <div class="flex flex-col gap-3 bg-[#FBF6F1] p-2.5">
+          <span class="font-montserrat text-[#B8A99A] text-xs font-medium tracking-[2px]">추천/유지</span>
+          <span class="text-[#504945] text-base font-medium">6개월 ~ 1년</span>
+        </div>
+      </div>
+      <p class="text-[#4A3F3A] text-xl leading-[1.3] absolute top-[464px] left-0">"표면 손상 없이 지방층과 진피층만 정밀 타겟팅"</p>
+      <div class="flex flex-col gap-5 max-w-[689px] absolute top-[502px] left-0">
+        <p class="text-[#6E6560] text-lg font-light leading-[1.6] max-w-[577px]">특허받은 극초음파 에너지가 피부 겉은 안전하게 통과하고 속(지방층, 진피층)에만 열을 전달합니다.</p>
+        <p class="text-[#6E6560] text-lg font-light leading-[1.6] max-w-[569px]">불필요한 지방 세포는 분해하고 콜라겐 섬유는 강하게 수축시켜, 통증 없이 윤곽을 매끄럽게 다듬습니다.</p>
+      </div>
+      <div class="flex gap-3 absolute top-[658px] left-0">
+        <span class="font-montserrat text-[#B8A99A] text-base font-medium border border-[#B8A99A] rounded px-3.5 py-2">Slimming</span>
+        <span class="font-montserrat text-[#B8A99A] text-base font-medium border border-[#B8A99A] rounded px-3.5 py-2">Contouring</span>
+        <span class="font-montserrat text-[#B8A99A] text-base font-medium border border-[#B8A99A] rounded px-3.5 py-2">Immediate Tightening</span>
+      </div>
+    </div>
+    <!-- Image RIGHT -->
+    <div class="w-[500px] h-[896px] shrink-0 bg-[#E8E4DE] overflow-hidden">
+      <img src="onda.png" alt="온다" class="w-full h-full object-cover">
+    </div>
+  </div>
+
+  <!-- ===== SHURINK ===== -->
+  <div class="flex items-center gap-[80px] px-[326px] py-[100px]" id="sec-shurink">
+    <!-- Image LEFT -->
+    <div class="w-[500px] h-[896px] shrink-0 bg-[#E8E4DE] overflow-hidden">
+      <img src="shurink.png" alt="슈링크" class="w-full h-full object-cover">
+    </div>
+    <!-- Content RIGHT -->
+    <div class="flex-1 relative" style="min-height:661px">
+      <span class="font-montserrat text-[#B8A99A] text-base font-light leading-[1.5] absolute top-0 left-0">Focused Ultrasound</span>
+      <h3 class="font-montserrat text-[#504945] text-[64px] font-bold tracking-[-1px] absolute top-[39px] left-0" style="line-height:0.84">SHURINK</h3>
+      <span class="text-[#B5B0AC] text-[32px] font-medium tracking-[-1px] absolute top-[108px] left-0" style="line-height:1.69">슈링크</span>
+      <p class="text-[#4A3F3A] text-xl leading-[1.3] absolute top-[189px] left-0">"피부 깊은 곳부터 끌어올려 완성하는 입체적인 V라인, 슈링크(SHURINK) 리프팅"</p>
+      <p class="text-[#6E6560] text-lg font-light leading-[1.6] max-w-[677px] absolute top-[227px] left-0">늘어지고 처진 얼굴선의 근본적인 원인을 해결합니다. 고강도 집속 초음파(HIFU) 에너지를 피부 속 가장 깊은 근막층(SMAS)까지 전달하여, 수술 없이도 피부 조직을 탄탄하게 수축시키고 중력을 거스르는 강력한 리프팅 효과를 선사합니다.</p>
+      <div class="flex gap-5 absolute top-[334px] left-0">
+        <div class="flex flex-col gap-3 bg-[#FBF6F1] p-2.5">
+          <span class="font-montserrat text-[#B8A99A] text-xs font-medium tracking-[2px]">시술시간</span>
+          <span class="text-[#504945] text-base font-medium">15분 ~ 20분</span>
+        </div>
+        <div class="flex flex-col gap-3 bg-[#FBF6F1] p-2.5">
+          <span class="font-montserrat text-[#B8A99A] text-xs font-medium tracking-[2px]">마취 여부</span>
+          <span class="text-[#504945] text-base font-medium">크림 마취</span>
+        </div>
+        <div class="flex flex-col gap-3 bg-[#FBF6F1] p-2.5">
+          <span class="font-montserrat text-[#B8A99A] text-xs font-medium tracking-[2px]">회복 기간</span>
+          <span class="text-[#504945] text-base font-medium">즉시 일상생활 가능</span>
+        </div>
+        <div class="flex flex-col gap-3 bg-[#FBF6F1] p-2.5">
+          <span class="font-montserrat text-[#B8A99A] text-xs font-medium tracking-[2px]">추천/유지</span>
+          <span class="text-[#504945] text-base font-medium">3개월 ~ 6개월</span>
+        </div>
+      </div>
+      <p class="text-[#4A3F3A] text-xl leading-[1.3] absolute top-[464px] left-0">"돋보기 원리로 초음파를 모아 가장 깊은 곳부터 리프팅"</p>
+      <div class="flex flex-col gap-5 max-w-[689px] absolute top-[502px] left-0">
+        <p class="text-[#6E6560] text-lg font-light leading-[1.6]">돋보기로 빛을 모으듯, 강력한 초음파 에너지를 피부 가장 깊은 근막층(SMAS)에 집중시킵니다.</p>
+        <p class="text-[#6E6560] text-lg font-light leading-[1.6]">타겟팅된 부위에 미세한 열응고점을 만들어, 늘어진 피부 조직을 즉각적으로 수축시키고 위로 당겨 올립니다.</p>
+      </div>
+      <div class="flex gap-3 absolute top-[629px] left-0">
+        <span class="font-montserrat text-[#B8A99A] text-base font-medium border border-[#B8A99A] rounded px-3.5 py-2">V-Line Lifting</span>
+        <span class="font-montserrat text-[#B8A99A] text-base font-medium border border-[#B8A99A] rounded px-3.5 py-2">Core Firming</span>
+        <span class="font-montserrat text-[#B8A99A] text-base font-medium border border-[#B8A99A] rounded px-3.5 py-2">Customized Tightening</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== POTENZA ===== -->
+  <div class="flex items-center gap-[80px] px-[326px] py-[100px]" id="sec-potenza">
+    <!-- Content LEFT -->
+    <div class="flex-1 relative" style="min-height:661px">
+      <span class="font-montserrat text-[#B8A99A] text-base font-light leading-[1.5] absolute top-0 left-0">Microneedling RF</span>
+      <h3 class="font-montserrat text-[#504945] text-[64px] font-bold tracking-[-1px] absolute top-[39px] left-0" style="line-height:0.84">POTENZA</h3>
+      <span class="text-[#B5B0AC] text-[32px] font-medium tracking-[-1px] absolute top-[108px] left-0" style="line-height:1.69">포텐자</span>
+      <p class="text-[#4A3F3A] text-xl leading-[1.3] absolute top-[189px] left-0">"피부 겉과 속을 동시에 재생하는 촘촘한 맞춤형 코어 부스터, 포텐자(POTENZA)"</p>
+      <p class="text-[#6E6560] text-lg font-light leading-[1.6] max-w-[667px] absolute top-[227px] left-0">개개인의 피부 고민에 맞춘 정교한 솔루션입니다. 마이크로 니들(미세침)을 통해 진피층에 고주파(RF) 에너지를 직접 전달하여, 넓어진 모공과 흉터를 개선하고 콜라겐 생성을 유도해 피부 근본의 건강함과 탄력을 되찾아 줍니다.</p>
+      <div class="flex gap-5 absolute top-[334px] left-0">
+        <div class="flex flex-col gap-3 bg-[#FBF6F1] p-2.5">
+          <span class="font-montserrat text-[#B8A99A] text-xs font-medium tracking-[2px]">시술시간</span>
+          <span class="text-[#504945] text-base font-medium">30분 ~ 40분</span>
+        </div>
+        <div class="flex flex-col gap-3 bg-[#FBF6F1] p-2.5">
+          <span class="font-montserrat text-[#B8A99A] text-xs font-medium tracking-[2px]">마취 여부</span>
+          <span class="text-[#504945] text-base font-medium">크림 마취</span>
+        </div>
+        <div class="flex flex-col gap-3 bg-[#FBF6F1] p-2.5">
+          <span class="font-montserrat text-[#B8A99A] text-xs font-medium tracking-[2px]">회복 기간</span>
+          <span class="text-[#504945] text-base font-medium">1~2일</span>
+        </div>
+        <div class="flex flex-col gap-3 bg-[#FBF6F1] p-2.5">
+          <span class="font-montserrat text-[#B8A99A] text-xs font-medium tracking-[2px]">추천/유지</span>
+          <span class="text-[#504945] text-base font-medium">6개월 ~ 1년</span>
+        </div>
+      </div>
+      <p class="text-[#4A3F3A] text-xl leading-[1.3] absolute top-[464px] left-0">"미세침과 고주파 열에너지의 듀얼 재생 시스템"</p>
+      <div class="flex flex-col gap-5 max-w-[689px] absolute top-[502px] left-0">
+        <p class="text-[#6E6560] text-lg font-light leading-[1.6]">머리카락보다 얇은 미세침이 피부에 침투해 물리적인 재생 반응을 유도합니다.</p>
+        <p class="text-[#6E6560] text-lg font-light leading-[1.6]">동시에 침투된 바늘 끝에서 고주파 에너지를 방출하여, 넓어진 모공을 조이고 전반적인 피부 결을 개선합니다.</p>
+      </div>
+      <div class="flex gap-3 absolute top-[629px] left-0">
+        <span class="font-montserrat text-[#B8A99A] text-base font-medium border border-[#B8A99A] rounded px-3.5 py-2">Pore &amp; Scar Refining</span>
+        <span class="font-montserrat text-[#B8A99A] text-base font-medium border border-[#B8A99A] rounded px-3.5 py-2">Tone &amp; Texture Improvement</span>
+        <span class="font-montserrat text-[#B8A99A] text-base font-medium border border-[#B8A99A] rounded px-3.5 py-2">Booster Synergy</span>
+      </div>
+    </div>
+    <!-- Image RIGHT -->
+    <div class="w-[500px] h-[896px] shrink-0 bg-[#E8E4DE] overflow-hidden">
+      <img src="potenza.png" alt="포텐자" class="w-full h-full object-cover">
+    </div>
+  </div>
+
+</div>
+
+<!-- Tab navigation + scroll spy JS -->
+<script>
+  const tabs = document.querySelectorAll('.tab-item');
+  const sections = ['sec-density', 'sec-onda', 'sec-shurink', 'sec-potenza'];
+
+  // Click → smooth scroll to section
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = document.getElementById(tab.dataset.target);
+      if (target) {
+        const offset = document.getElementById('tabBar').offsetHeight;
+        const y = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    });
+  });
+
+  // Scroll spy → highlight active tab
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        tabs.forEach(t => t.classList.remove('active'));
+        const activeTab = document.querySelector(`[data-target="${entry.target.id}"]`);
+        if (activeTab) activeTab.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-50% 0px -50% 0px' });
+
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) observer.observe(el);
+  });
+</script>
+
+</body>
+</html>

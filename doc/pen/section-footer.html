@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Section 7 - Footer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-dark-bg: #0F0D2E;
+      --color-border-dark: #2D2A5E;
+      --color-white: #FFFFFF;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Section 7 - Footer -->
+<div class="w-full bg-[var(--color-dark-bg)] flex flex-col gap-[60px] pt-[60px] px-[60px] pb-[40px]">
+
+  <!-- Footer Top: 4 Columns -->
+  <div class="flex gap-10 w-full">
+
+    <!-- Brand Column -->
+    <div class="flex-1 flex flex-col gap-4">
+      <span class="text-[var(--color-white)] text-base font-bold tracking-[2px]">MEDI-W ™</span>
+      <p class="text-[var(--color-white)] text-sm leading-[1.6] max-w-[300px]">환자와 의료진을 매끄럽게 연결하는<br>스마트 의료 예약 서비스.</p>
+    </div>
+
+    <!-- Column 1: 서비스 -->
+    <div class="flex-1 flex flex-col gap-4">
+      <span class="text-[var(--color-white)] text-sm font-semibold">서비스</span>
+      <a href="#" class="text-[var(--color-white)] text-sm hover:opacity-80 transition-opacity">기능</a>
+      <a href="#" class="text-[var(--color-white)] text-sm hover:opacity-80 transition-opacity">요금제</a>
+      <a href="#" class="text-[var(--color-white)] text-sm hover:opacity-80 transition-opacity">사례 연구</a>
+      <a href="#" class="text-[var(--color-white)] text-sm hover:opacity-80 transition-opacity">업데이트</a>
+    </div>
+
+    <!-- Column 2: 회사 -->
+    <div class="flex-1 flex flex-col gap-4">
+      <span class="text-[var(--color-white)] text-sm font-semibold">회사</span>
+      <a href="#" class="text-[var(--color-white)] text-sm hover:opacity-80 transition-opacity">소개</a>
+      <a href="#" class="text-[var(--color-white)] text-sm hover:opacity-80 transition-opacity">채용</a>
+      <a href="#" class="text-[var(--color-white)] text-sm hover:opacity-80 transition-opacity">블로그</a>
+      <a href="#" class="text-[var(--color-white)] text-sm hover:opacity-80 transition-opacity">문의</a>
+    </div>
+
+    <!-- Column 3: 지원 -->
+    <div class="flex-1 flex flex-col gap-4">
+      <span class="text-[var(--color-white)] text-sm font-semibold">지원</span>
+      <a href="#" class="text-[var(--color-white)] text-sm hover:opacity-80 transition-opacity">고객센터</a>
+      <a href="#" class="text-[var(--color-white)] text-sm hover:opacity-80 transition-opacity">문서</a>
+      <a href="#" class="text-[var(--color-white)] text-sm hover:opacity-80 transition-opacity">개인정보처리방침</a>
+      <a href="#" class="text-[var(--color-white)] text-sm hover:opacity-80 transition-opacity">이용약관</a>
+    </div>
+
+  </div>
+
+  <!-- Divider -->
+  <div class="w-full h-px bg-[var(--color-border-dark)]"></div>
+
+  <!-- Footer Bottom -->
+  <div class="flex items-center justify-between w-full">
+    <span class="text-[var(--color-white)] text-[13px]">© 2026 MEDI-W. 모든 권리 보유.</span>
+    <div class="flex gap-6">
+      <a href="#" class="text-[var(--color-white)] text-[13px] hover:opacity-80 transition-opacity">트위터</a>
+      <a href="#" class="text-[var(--color-white)] text-[13px] hover:opacity-80 transition-opacity">링크드인</a>
+      <a href="#" class="text-[var(--color-white)] text-[13px] hover:opacity-80 transition-opacity">인스타그램</a>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

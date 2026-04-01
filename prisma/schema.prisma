@@ -1,0 +1,314 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Admin {
+  id          Int      @id @default(autoincrement())
+  loginId     String   @unique @map("login_id")
+  password    String
+  name        String
+  role        String   @default("admin")
+  isActive    Boolean  @default(true) @map("is_active")
+  permissions String   @default("all") @map("permissions") @db.Text
+  canManageAdmins Boolean @default(false) @map("can_manage_admins")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  logs AdminLog[]
+
+  @@map("admins")
+}
+
+model AdminLog {
+  id        Int      @id @default(autoincrement())
+  adminId   Int      @map("admin_id")
+  action    String
+  detail    String   @default("") @db.Text
+  ip        String   @default("")
+  userAgent String   @default("") @map("user_agent") @db.Text
+  createdAt DateTime @default(now()) @map("created_at")
+
+  admin Admin @relation(fields: [adminId], references: [id], onDelete: Cascade)
+
+  @@map("admin_logs")
+}
+
+model TemplateFolder {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String   @default("") @db.Text
+  color       String   @default("#3182F6")
+  sortOrder   Int      @default(0) @map("sort_order")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  templates Template[]
+
+  @@map("template_folders")
+}
+
+model Template {
+  id          Int      @id @default(autoincrement())
+  name        String
+  slug        String   @unique
+  folderId    Int?     @map("folder_id")
+  category    String   @default("general")
+  htmlContent String   @map("html_content") @db.Text
+  cssContent  String   @default("") @map("css_content") @db.Text
+  jsContent   String   @default("") @map("js_content") @db.Text
+  thumbnail   String?
+  isOriginal  Boolean  @default(true) @map("is_original")
+  sourceId    Int?     @map("source_id")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  folder   TemplateFolder? @relation(fields: [folderId], references: [id], onDelete: SetNull)
+  source   Template?  @relation("TemplateClones", fields: [sourceId], references: [id])
+  clones   Template[] @relation("TemplateClones")
+  sections PageSection[]
+  banners  Banner[]
+  versions TemplateVersion[]
+
+  @@map("templates")
+}
+
+model TemplateVersion {
+  id          Int      @id @default(autoincrement())
+  templateId  Int      @map("template_id")
+  version     Int
+  htmlContent String   @map("html_content") @db.Text
+  cssContent  String   @default("") @map("css_content") @db.Text
+  jsContent   String   @default("") @map("js_content") @db.Text
+  memo        String   @default("") @db.Text
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  template Template @relation(fields: [templateId], references: [id], onDelete: Cascade)
+
+  @@unique([templateId, version])
+  @@map("template_versions")
+}
+
+model Page {
+  id        Int      @id @default(autoincrement())
+  title     String
+  slug      String   @unique
+  pageType  String   @default("main") @map("page_type")
+  isActive  Boolean  @default(true) @map("is_active")
+  sortOrder Int      @default(0) @map("sort_order")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  sections PageSection[]
+
+  @@map("pages")
+}
+
+model PageSection {
+  id          Int      @id @default(autoincrement())
+  pageId      Int      @map("page_id")
+  templateId  Int      @map("template_id")
+  sortOrder   Int      @default(0) @map("sort_order")
+  isActive    Boolean  @default(true) @map("is_active")
+  isFixed     Boolean  @default(false) @map("is_fixed")
+  fixPosition String?  @map("fix_position")
+  htmlContent String   @default("") @map("html_content") @db.Text
+  cssContent  String   @default("") @map("css_content") @db.Text
+  jsContent   String   @default("") @map("js_content") @db.Text
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  page     Page     @relation(fields: [pageId], references: [id], onDelete: Cascade)
+  template Template @relation(fields: [templateId], references: [id])
+
+  @@map("page_sections")
+}
+
+model Banner {
+  id         Int      @id @default(autoincrement())
+  templateId Int      @map("template_id")
+  slotKey    String   @map("slot_key")
+  imageUrl   String   @map("image_url")
+  linkUrl    String?  @map("link_url")
+  altText    String?  @map("alt_text")
+  isActive   Boolean  @default(true) @map("is_active")
+  sortOrder  Int      @default(0) @map("sort_order")
+  createdAt  DateTime @default(now()) @map("created_at")
+  updatedAt  DateTime @updatedAt @map("updated_at")
+
+  template Template @relation(fields: [templateId], references: [id], onDelete: Cascade)
+
+  @@map("banners")
+}
+
+model SystemSetting {
+  id        Int      @id @default(autoincrement())
+  key       String   @unique
+  value     String   @db.Text
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("system_settings")
+}
+
+model Board {
+  id            Int      @id @default(autoincrement())
+  name          String
+  boardId       String   @unique @map("board_id")
+  boardType     String   @default("list") @map("board_type")
+  isSecret      Boolean  @default(false) @map("is_secret")
+  useComment    Boolean  @default(true) @map("use_comment")
+  writeRole     String   @default("admin") @map("write_role")
+  listRole      String   @default("all") @map("list_role")
+  readRole      String   @default("all") @map("read_role")
+  commentRole   String   @default("all") @map("comment_role")
+  customCss     String   @default("") @map("custom_css") @db.Text
+  isActive      Boolean  @default(true) @map("is_active")
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+
+  posts Post[]
+
+  @@map("boards")
+}
+
+model Post {
+  id        Int      @id @default(autoincrement())
+  boardId   Int      @map("board_id")
+  title     String
+  content   String   @db.Text
+  author    String
+  password  String?
+  isSecret  Boolean  @default(false) @map("is_secret")
+  viewCount Int      @default(0) @map("view_count")
+  imageUrl  String?  @map("image_url")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  board    Board     @relation(fields: [boardId], references: [id], onDelete: Cascade)
+  comments Comment[]
+
+  @@map("posts")
+}
+
+model Comment {
+  id        Int      @id @default(autoincrement())
+  postId    Int      @map("post_id")
+  content   String   @db.Text
+  author    String
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  post Post @relation(fields: [postId], references: [id], onDelete: Cascade)
+
+  @@map("comments")
+}
+
+model Popup {
+  id          Int       @id @default(autoincrement())
+  title       String
+  description String    @default("") @db.Text
+  popupType   String    @default("image") @map("popup_type")
+  imageUrl    String?   @map("image_url")
+  htmlContent String    @default("") @map("html_content") @db.Text
+  linkUrl     String?   @map("link_url")
+  isActive    Boolean   @default(true) @map("is_active")
+  startDate   DateTime? @map("start_date")
+  endDate     DateTime? @map("end_date")
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+
+  @@map("popups")
+}
+
+model Faq {
+  id        Int      @id @default(autoincrement())
+  question  String   @db.Text
+  answer    String   @db.Text
+  category  String   @default("일반")
+  sortOrder Int      @default(0) @map("sort_order")
+  isActive  Boolean  @default(true) @map("is_active")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("faqs")
+}
+
+model MemberField {
+  id          Int      @id @default(autoincrement())
+  fieldKey    String   @unique @map("field_key")
+  label       String
+  fieldType   String   @default("text") @map("field_type")
+  required    Boolean  @default(false)
+  options     String   @default("") @map("options") @db.Text
+  sortOrder   Int      @default(0) @map("sort_order")
+  isActive    Boolean  @default(true) @map("is_active")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  @@map("member_fields")
+}
+
+model Member {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  name      String
+  phone     String   @default("")
+  isActive  Boolean  @default(true) @map("is_active")
+  extraData String   @default("{}") @map("extra_data") @db.Text
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("members")
+}
+
+model FormConfig {
+  id          Int      @id @default(autoincrement())
+  formType    String   @unique @map("form_type")
+  fields      String   @default("[]") @map("fields") @db.Text
+  isActive    Boolean  @default(true) @map("is_active")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  @@map("form_configs")
+}
+
+model Consultation {
+  id        Int      @id @default(autoincrement())
+  data      String   @default("{}") @db.Text
+  status    String   @default("pending")
+  adminMemo String   @default("") @map("admin_memo") @db.Text
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("consultations")
+}
+
+model Inquiry {
+  id        Int      @id @default(autoincrement())
+  name      String
+  phone     String   @default("")
+  email     String   @default("")
+  content   String   @db.Text
+  status    String   @default("pending")
+  adminMemo String   @default("") @map("admin_memo") @db.Text
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("inquiries")
+}
+
+model Reservation {
+  id        Int      @id @default(autoincrement())
+  data      String   @default("{}") @db.Text
+  status    String   @default("pending")
+  adminMemo String   @default("") @map("admin_memo") @db.Text
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("reservations")
+}
