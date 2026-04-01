@@ -102,7 +102,8 @@ export default function ConsultationsPage() {
             </thead>
             <tbody className="divide-y divide-gray-50">
               {items.map((item, idx) => {
-                const dataEntries = Object.entries(item.data);
+                const parsed = typeof item.data === "string" ? (() => { try { return JSON.parse(item.data); } catch { return {}; } })() : item.data || {};
+                const dataEntries = Object.entries(parsed);
                 const preview = dataEntries.slice(0, 3).map(([k, v]) => `${k}: ${v}`).join(" / ");
                 return (
                   <tr key={item.id} className="hover:bg-gray-50/50 transition-colors">
