@@ -61,12 +61,10 @@ export default function ReservationsPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <h3 className="text-xl font-bold text-[#191F28]">예약 목록</h3>
-        <Link
-          href="/reservations/settings"
-          className="px-4 py-2.5 text-sm font-medium text-gray-600 bg-white border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors"
-        >
-          설정
-        </Link>
+        <div className="flex gap-2">
+          <a href="/reservation" target="_blank" className="px-4 py-2.5 text-sm font-bold text-white bg-[#191F28] rounded-xl hover:bg-[#333D4B] transition-all">사용자 페이지</a>
+          <Link href="/reservations/settings" className="px-4 py-2.5 text-sm font-medium text-gray-600 bg-white border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors">설정</Link>
+        </div>
       </div>
 
       <div className="flex gap-2">

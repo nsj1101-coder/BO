@@ -85,17 +85,17 @@ export default function MembersPage() {
           <h3 className="text-xl font-bold text-[#191F28]">회원 목록</h3>
           <p className="text-sm text-gray-500 mt-1">총 {total}명의 회원</p>
         </div>
-        <div className="flex items-center gap-3">
-          <Link
-            href="/members/settings"
-            className="px-4 py-2.5 text-sm font-medium text-gray-600 bg-white border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors"
-          >
+        <div className="flex items-center gap-2">
+          <a href="/register" target="_blank" className="px-4 py-2.5 text-sm font-bold text-white bg-[#191F28] rounded-xl hover:bg-[#333D4B] transition-all">
+            회원가입 페이지
+          </a>
+          <a href="/user-login" target="_blank" className="px-4 py-2.5 text-sm font-bold text-[#191F28] bg-white border border-gray-200 rounded-xl hover:bg-gray-50 transition-all">
+            로그인 페이지
+          </a>
+          <Link href="/members/settings" className="px-4 py-2.5 text-sm font-medium text-gray-600 bg-white border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors">
             필드 설정
           </Link>
-          <button
-            onClick={handleExport}
-            className="px-5 py-2.5 bg-[#03B26C] text-white text-sm font-semibold rounded-xl hover:bg-[#029A5E] transition-colors"
-          >
+          <button onClick={handleExport} className="px-4 py-2.5 bg-[#03B26C] text-white text-sm font-semibold rounded-xl hover:bg-[#029A5E] transition-colors">
             엑셀 다운로드
           </button>
         </div>
@@ -140,6 +140,7 @@ export default function MembersPage() {
                 <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">연락처</th>
                 <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">가입일</th>
                 <th className="px-6 py-4 text-center text-xs font-semibold text-gray-500 uppercase tracking-wider">상태</th>
+                <th className="px-6 py-4 text-right text-xs font-semibold text-gray-500 uppercase tracking-wider">관리</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-50">
@@ -161,6 +162,11 @@ export default function MembersPage() {
                     >
                       <span className={`absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform ${member.isActive ? "translate-x-5" : ""}`} />
                     </button>
+                  </td>
+                  <td className="px-6 py-4 text-right whitespace-nowrap">
+                    <Link href={`/members/${member.id}`} className="px-3 py-1.5 text-[11px] font-semibold text-gray-500 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
+                      상세
+                    </Link>
                   </td>
                 </tr>
               ))}

@@ -62,7 +62,10 @@ export default function InquiriesPage() {
 
   return (
     <div className="space-y-6">
-      <h3 className="text-xl font-bold text-[#191F28]">문의 목록</h3>
+      <div className="flex items-center justify-between">
+        <h3 className="text-xl font-bold text-[#191F28]">문의 목록</h3>
+        <a href="/inquiry" target="_blank" className="px-4 py-2.5 text-sm font-bold text-white bg-[#191F28] rounded-xl hover:bg-[#333D4B] transition-all">사용자 페이지</a>
+      </div>
 
       <div className="flex gap-2">
         {tabs.map((tab) => (
