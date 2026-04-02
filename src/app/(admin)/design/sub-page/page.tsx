@@ -79,6 +79,13 @@ export default function SubPageManagement() {
     }
   };
 
+  const deletePage = async (page: Page) => {
+    if (!confirm(`"${page.title}" 서브 페이지를 삭제하시겠습니까? 포함된 섹션도 모두 삭제됩니다.`)) return;
+    await fetch(`/api/pages/${page.id}`, { method: "DELETE" });
+    if (selectedPage?.id === page.id) setSelectedPage(null);
+    refreshPages();
+  };
+
   const togglePage = async (page: Page) => {
     await fetch(`/api/pages/${page.id}`, {
       method: "PUT",
@@ -236,6 +243,9 @@ export default function SubPageManagement() {
                     <a href={`/preview?id=${p.id}`} target="_blank" className="text-[10px] font-semibold text-[#3182F6] bg-[#3182F6]/10 px-2 py-1 rounded hover:bg-[#3182F6]/20 transition-colors">
                       미리보기
                     </a>
+                    <button onClick={() => deletePage(p)} className="text-[10px] font-semibold text-[#F04452] bg-[#F04452]/10 px-2 py-1 rounded hover:bg-[#F04452]/20 transition-colors">
+                      삭제
+                    </button>
                   </div>
                 </div>
                 <p className="text-[11px] text-gray-400 mt-1">
