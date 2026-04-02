@@ -27,29 +27,27 @@
 
 }
 
-/* 어드민 전용 텍스트 검정 강제 (data-admin-main 속성이 있는 main만) */
-main[data-admin] p, main[data-admin] span, main[data-admin] div,
-main[data-admin] td, main[data-admin] th,
-main[data-admin] label, main[data-admin] h1, main[data-admin] h2,
-main[data-admin] h3, main[data-admin] h4, main[data-admin] h5,
-main[data-admin] li, main[data-admin] dt, main[data-admin] dd,
-main[data-admin] input, main[data-admin] textarea, main[data-admin] select,
-main[data-admin] code {
+/* Tailwind 클래스보다 높은 우선순위로 메인 영역 텍스트 검정 강제 */
+main p, main span, main div, main td, main th,
+main label, main h1, main h2, main h3, main h4, main h5,
+main li, main dt, main dd, main input, main textarea, main select,
+main code {
   color: #111 !important;
 }
 
-main[data-admin] table thead th {
+main table thead th {
   color: #666 !important;
 }
 
-main[data-admin] a {
+main a {
   color: #4332f8 !important;
 }
 
-main[data-admin] a.text-white,
-main[data-admin] button.text-white,
-main[data-admin] a[class*="text-white"],
-main[data-admin] button[class*="text-white"] {
+/* text-white 클래스가 있는 링크/버튼은 흰색 유지 */
+main a.text-white,
+main button.text-white,
+main a[class*="text-white"],
+main button[class*="text-white"] {
   color: #fff !important;
 }
 
@@ -57,24 +55,26 @@ input::placeholder, textarea::placeholder {
   color: #bbb !important;
 }
 
-main[data-admin] [style*="background: #4332f8"],
-main[data-admin] [style*="background:#4332f8"],
-main[data-admin] [style*="background: #3a2be0"],
-main[data-admin] [style*="background: rgb(67"] {
+/* 색상 배경 → 흰색 텍스트 */
+main [style*="background: #4332f8"],
+main [style*="background:#4332f8"],
+main [style*="background: #3a2be0"],
+main [style*="background: rgb(67"] {
   color: #fff !important;
 }
 
-main[data-admin] [style*="background: #4332f8"] *,
-main[data-admin] [style*="background:#4332f8"] *,
-main[data-admin] [style*="background: #3a2be0"] *,
-main[data-admin] [style*="background: rgb(67"] * {
+main [style*="background: #4332f8"] *,
+main [style*="background:#4332f8"] *,
+main [style*="background: #3a2be0"] *,
+main [style*="background: rgb(67"] * {
   color: #fff !important;
 }
 
-main[data-admin] [style*="background: #fff"],
-main[data-admin] [style*="background:#fff"],
-main[data-admin] [style*="background: transparent"],
-main[data-admin] [style*="background: #f3f4f6"],
-main[data-admin] [style*="background: rgb(255"] {
+/* 흰색/연한 배경 → 검정 텍스트 */
+main [style*="background: #fff"] ,
+main [style*="background:#fff"],
+main [style*="background: transparent"],
+main [style*="background: #f3f4f6"],
+main [style*="background: rgb(255"] {
   color: #111 !important;
 }

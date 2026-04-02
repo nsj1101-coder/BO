@@ -297,7 +297,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       </aside>
 
       {/* ===== Main Content ===== */}
-      <main data-admin style={{ marginLeft: sideW, marginTop: 64, minHeight: "calc(100vh - 64px)", transition: "margin-left 0.2s ease" }}>
+      <main style={{ marginLeft: sideW, marginTop: 64, minHeight: "calc(100vh - 64px)", transition: "margin-left 0.2s ease" }}>
         <div style={{ padding: "24px 32px 8px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <h2 style={{ fontSize: 18, fontWeight: 700, color: "#111", margin: 0 }}>{pageTitle}</h2>
           <span style={{ fontSize: 12, color: "#bbb" }} suppressHydrationWarning>{new Date().toLocaleDateString("ko-KR", { year: "numeric", month: "long", day: "numeric" })}</span>
