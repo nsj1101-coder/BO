@@ -168,11 +168,11 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               const active = isActive(item.href);
               return (
                 <Link key={item.label} href={item.href} style={{
-                  display: "flex", alignItems: "center", height: 48, padding: collapsed ? "0" : "0 12px", borderRadius: 100,
+                  display: "flex", alignItems: "center", minHeight: 48, height: 48, padding: collapsed ? "0" : "0 12px", borderRadius: 100,
                   background: active ? "#4332f8" : "transparent",
                   boxShadow: active ? "0 4px 20px rgba(67,50,248,0.2)" : "none",
                   textDecoration: "none", whiteSpace: "nowrap", justifyContent: collapsed ? "center" : "flex-start",
-                  transition: "all 0.15s ease",
+                  transition: "background 0.15s ease, box-shadow 0.15s ease",
                 }}>
                   <span style={{ width: 36, height: 36, borderRadius: 100, background: active ? "#fff" : "#f3f4f6", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginRight: collapsed ? 0 : 12, color: "#999", lineHeight: 0, transition: "margin 0.2s" }}>{item.icon}</span>
                   {!collapsed && <span style={{ fontSize: 15, fontWeight: 600, color: active ? "#fff" : "#333" }}>{item.label}</span>}
@@ -193,12 +193,12 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                     }
                   }}
                   style={{
-                    display: "flex", alignItems: "center", width: "100%", height: 48, padding: collapsed ? "0" : "0 12px",
+                    display: "flex", alignItems: "center", width: "100%", minHeight: 48, height: 48, padding: collapsed ? "0" : "0 12px",
                     borderRadius: 100, border: "none", cursor: "pointer",
                     background: collapsed && hasActiveChild ? "#4332f8" : "transparent",
                     boxShadow: collapsed && hasActiveChild ? "0 4px 20px rgba(67,50,248,0.2)" : "none",
                     justifyContent: collapsed ? "center" : "flex-start", whiteSpace: "nowrap",
-                    transition: "all 0.15s ease",
+                    transition: "background 0.15s ease, box-shadow 0.15s ease",
                   }}
                 >
                   <span style={{ width: 36, height: 36, borderRadius: 100, background: collapsed && hasActiveChild ? "#fff" : hasActiveChild ? "rgba(67,50,248,0.1)" : "#f3f4f6", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginRight: collapsed ? 0 : 12, color: "#999", lineHeight: 0, transition: "margin 0.2s" }}>{item.icon}</span>
