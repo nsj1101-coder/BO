@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Featuring - Layout</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Pretendard', sans-serif; }
+
+    /* Sidebar */
+    .sidebar {
+      width: 230px;
+      min-height: 100vh;
+      padding: 20px 0 0 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      transition: width 0.3s ease;
+      overflow: hidden;
+    }
+    .sidebar.collapsed {
+      width: 60px;
+    }
+    .sidebar.collapsed .menu-label,
+    .sidebar.collapsed .collapse-text,
+    .sidebar.collapsed .badge-count {
+      opacity: 0;
+      width: 0;
+      overflow: hidden;
+    }
+    .sidebar.collapsed .menu-item {
+      justify-content: center;
+      padding-left: 0;
+      padding-right: 0;
+    }
+    .sidebar.collapsed .menu-icon-wrap {
+      margin-right: 0;
+    }
+
+    /* Menu items */
+    .menu-item {
+      display: flex;
+      align-items: center;
+      height: 60px;
+      padding: 0 12px;
+      border-radius: 100px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      position: relative;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .menu-item:hover {
+      background: #f3f4f6;
+    }
+    .menu-item.active {
+      background: #4332f8;
+      box-shadow: 0 4px 38.5px rgba(67, 50, 248, 0.2);
+    }
+    .menu-item.active:hover {
+      background: #3a2be0;
+    }
+    .menu-item.active .menu-label {
+      color: #fff;
+    }
+    .menu-item.active .menu-icon-wrap {
+      background: #fff;
+    }
+
+    .menu-icon-wrap {
+      width: 36px;
+      height: 36px;
+      border-radius: 100px;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-right: 14px;
+    }
+    .menu-icon-wrap img {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+    }
+    .menu-label {
+      font-size: 16px;
+      font-weight: 600;
+      color: #000;
+      line-height: 1.3;
+      transition: opacity 0.2s ease;
+    }
+
+    /* Badge */
+    .badge-count {
+      width: 24px;
+      height: 24px;
+      border-radius: 100px;
+      background: #4332f8;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: auto;
+      flex-shrink: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    /* Divider */
+    .menu-divider {
+      width: calc(100% - 30px);
+      margin: 0 15px;
+      height: 0;
+      border-top: 1px solid #e5e7eb;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    /* Collapse toggle */
+    .collapse-btn {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      padding: 0 30px;
+      margin-bottom: 6px;
+      user-select: none;
+    }
+    .collapse-text {
+      font-size: 12px;
+      font-weight: 500;
+      color: #000;
+      transition: opacity 0.2s ease;
+    }
+    .collapse-icon {
+      width: 16px;
+      height: 16px;
+      transition: transform 0.3s ease;
+    }
+    .sidebar.collapsed .collapse-icon {
+      transform: rotate(180deg);
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+
+  <!-- Top Navigation Bar -->
+  <header class="w-full h-[100px] bg-white border-b border-gray-300 flex items-center px-[29px] fixed top-0 left-0 z-50">
+    <div class="flex items-center gap-3">
+      <img src="img/featuring/7NOiI.png" alt="featuring logo" class="w-[50px] h-[50px] object-contain">
+      <span class="text-[32px] font-semibold text-black leading-[1.3]">featuring</span>
+    </div>
+  </header>
+
+  <!-- Left Sidebar -->
+  <aside class="sidebar fixed top-[100px] left-[25px] z-40" id="sidebar">
+
+    <!-- Collapse Toggle -->
+    <div class="collapse-btn" id="collapseBtn">
+      <span class="collapse-text">접기</span>
+      <svg class="collapse-icon ml-1" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+        <polyline points="10 4 6 8 10 12"/>
+      </svg>
+    </div>
+
+    <!-- Menu: Section 1 -->
+    <nav class="flex flex-col">
+
+      <a href="#" class="menu-item" data-menu="dashboard">
+        <div class="menu-icon-wrap">
+          <img src="img/featuring/8N2Eg.png" alt="대시보드">
+        </div>
+        <span class="menu-label">대시보드</span>
+      </a>
+
+      <a href="#" class="menu-item active" data-menu="find">
+        <div class="menu-icon-wrap">
+          <img src="img/featuring/5Y1cX.png" alt="인플루언서 찾기">
+        </div>
+        <span class="menu-label">인플루언서 찾기</span>
+      </a>
+
+      <a href="#" class="menu-item" data-menu="manage">
+        <div class="menu-icon-wrap">
+          <img src="img/featuring/2O9wr.png" alt="인플루언서 관리">
+        </div>
+        <span class="menu-label">인플루언서 관리</span>
+      </a>
+
+      <a href="#" class="menu-item" data-menu="ranking">
+        <div class="menu-icon-wrap">
+          <img src="img/featuring/O8fmA.png" alt="인플루언서 랭킹">
+        </div>
+        <span class="menu-label">인플루언서 랭킹</span>
+      </a>
+
+      <a href="#" class="menu-item" data-menu="ai">
+        <div class="menu-icon-wrap">
+          <img src="img/featuring/8RoxT.png" alt="AI 리스트업">
+        </div>
+        <span class="menu-label">AI 리스트업</span>
+      </a>
+
+    </nav>
+
+    <!-- Divider -->
+    <div class="menu-divider my-2"></div>
+
+    <!-- Menu: Section 2 -->
+    <nav class="flex flex-col">
+
+      <a href="#" class="menu-item" data-menu="campaign">
+        <div class="menu-icon-wrap">
+          <img src="img/featuring/QEdnz.png" alt="캠페인 관리">
+        </div>
+        <span class="menu-label">캠페인 관리</span>
+      </a>
+
+      <a href="#" class="menu-item" data-menu="message">
+        <div class="menu-icon-wrap">
+          <img src="img/featuring/gu9ma.png" alt="메시지 관리">
+        </div>
+        <span class="menu-label">메시지 관리</span>
+        <span class="badge-count">2</span>
+      </a>
+
+      <a href="#" class="menu-item" data-menu="dm">
+        <div class="menu-icon-wrap">
+          <img src="img/featuring/ZaISc.png" alt="DM/이메일 관리">
+        </div>
+        <span class="menu-label">DM/이메일 관리</span>
+        <span class="badge-count">2</span>
+      </a>
+
+    </nav>
+
+  </aside>
+
+  <!-- Main Content Area (placeholder) -->
+  <main class="ml-[280px] mt-[100px] p-8">
+    <div class="text-gray-400 text-sm">메인 콘텐츠 영역</div>
+  </main>
+
+  <script>
+    // Sidebar collapse toggle
+    const sidebar = document.getElementById('sidebar');
+    const collapseBtn = document.getElementById('collapseBtn');
+
+    collapseBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('collapsed');
+    });
+
+    // Menu active state
+    const menuItems = document.querySelectorAll('.menu-item');
+    menuItems.forEach(item => {
+      item.addEventListener('click', (e) => {
+        e.preventDefault();
+        menuItems.forEach(m => m.classList.remove('active'));
+        item.classList.add('active');
+      });
+    });
+  </script>
+
+</body>
+</html>
