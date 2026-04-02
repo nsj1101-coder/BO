@@ -25,14 +25,25 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* 테이블/리스트 본문 텍스트 검정 강제 */
-  table tbody td {
-    color: #111 !important;
+  /* 메인 콘텐츠 영역 텍스트 검정 */
+  main p, main span, main div, main td, main th,
+  main label, main h1, main h2, main h3, main h4,
+  main li, main input, main textarea, main select {
+    color: #111;
   }
-  table tbody td a {
-    color: #4332f8 !important;
+
+  /* 테이블 헤더만 약간 연하게 */
+  main table thead th {
+    color: #666 !important;
   }
-  table thead th {
-    color: #888 !important;
+
+  /* 링크는 보라색 */
+  main a {
+    color: #4332f8;
+  }
+
+  /* placeholder */
+  input::placeholder, textarea::placeholder {
+    color: #bbb !important;
   }
 }
