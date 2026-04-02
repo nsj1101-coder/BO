@@ -44,30 +44,21 @@ const cmsMenuItems = [
 
 const crmMenuItems = [
   { label: "CRM 대시보드", href: "/crm/dashboard", icon: <SvgIcon d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /> },
-  { label: "고객 관리", icon: <SvgIcon d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />, children: [
-    { label: "고객 리스트", href: "/crm/customers" },
-    { label: "고객 등급", href: "/crm/grades" },
-    { label: "고객 태그", href: "/crm/tags" },
+  { label: "리드 CRM", icon: <SvgIcon d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />, children: [
+    { label: "리드 통합함", href: "/crm/leads" },
+    { label: "고객 카드", href: "/crm/customers" },
+    { label: "상담 관리", href: "/crm/consultations" },
+    { label: "후속 일정", href: "/crm/followups" },
+    { label: "상태 코드", href: "/crm/status-codes" },
   ]},
-  { label: "영업 관리", icon: <SvgIcon d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />, children: [
-    { label: "거래 파이프라인", href: "/crm/deals" },
-    { label: "견적서", href: "/crm/quotes" },
+  { label: "세일즈 CRM", icon: <SvgIcon d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />, children: [
+    { label: "영업 파이프라인", href: "/crm/deals" },
+    { label: "견적 관리", href: "/crm/quotes" },
     { label: "계약 관리", href: "/crm/contracts" },
   ]},
-  { label: "마케팅", icon: <SvgIcon d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />, children: [
-    { label: "이메일 캠페인", href: "/crm/campaigns" },
-    { label: "SMS 발송", href: "/crm/sms" },
-    { label: "자동화 규칙", href: "/crm/automation" },
-  ]},
-  { label: "일정/업무", icon: <SvgIcon d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />, children: [
-    { label: "캘린더", href: "/crm/calendar" },
-    { label: "업무 목록", href: "/crm/tasks" },
-    { label: "메모", href: "/crm/notes" },
-  ]},
-  { label: "분석/리포트", icon: <SvgIcon d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />, children: [
-    { label: "매출 분석", href: "/crm/analytics" },
-    { label: "고객 통계", href: "/crm/stats" },
-    { label: "활동 리포트", href: "/crm/reports" },
+  { label: "마케팅 CRM", icon: <SvgIcon d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />, children: [
+    { label: "캠페인", href: "/crm/campaigns" },
+    { label: "분석/리포트", href: "/crm/analytics" },
   ]},
   { label: "환경설정", icon: <SvgIcon d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />, children: [
     { label: "사이트 설정", href: "/site-config" },

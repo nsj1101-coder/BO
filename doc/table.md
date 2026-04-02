@@ -321,3 +321,120 @@
 | admin_memo| TEXT      | DEFAULT ''           | 관리자 메모   |
 | created_at| TIMESTAMP | DEFAULT NOW()        | 예약일시     |
 | updated_at| TIMESTAMP | AUTO UPDATE          | 수정일시     |
+
+---
+
+## CRM 테이블
+
+### crm_leads - 리드 통합함
+| Column | Type | Constraints | Description |
+|--------|------|-------------|-------------|
+| id | SERIAL | PK | 리드 ID |
+| lead_type | VARCHAR | DEFAULT 'inquiry' | 유형 (inquiry/consultation/reservation/signup/manual) |
+| customer_name | VARCHAR | NOT NULL | 고객명 |
+| phone | VARCHAR | DEFAULT '' | 연락처 |
+| email | VARCHAR | DEFAULT '' | 이메일 |
+| company_name | VARCHAR | DEFAULT '' | 회사명 |
+| content | TEXT | DEFAULT '' | 내용 |
+| landing_page_url | VARCHAR | DEFAULT '' | 랜딩 페이지 URL |
+| referrer_url | VARCHAR | DEFAULT '' | 리퍼러 URL |
+| utm_source/medium/campaign | VARCHAR | DEFAULT '' | UTM 파라미터 |
+| status_code | VARCHAR | DEFAULT 'new' | 상태 코드 |
+| priority | VARCHAR | DEFAULT 'normal' | 우선순위 |
+| assignee_id | INTEGER | FK → admins.id, NULLABLE | 담당자 |
+| customer_id | INTEGER | FK → crm_customers.id, NULLABLE | 연결된 고객 |
+| next_action_date | TIMESTAMP | NULLABLE | 다음 액션일 |
+
+### crm_customers - 고객 카드
+| Column | Type | Constraints | Description |
+|--------|------|-------------|-------------|
+| id | SERIAL | PK | 고객 ID |
+| customer_type | VARCHAR | DEFAULT 'individual' | 구분 (individual/corporate) |
+| name | VARCHAR | NOT NULL | 이름 |
+| company_name | VARCHAR | DEFAULT '' | 회사명 |
+| phone/email | VARCHAR | DEFAULT '' | 연락처 |
+| grade | VARCHAR | DEFAULT '일반' | 등급 |
+| tags | TEXT | DEFAULT '' | 태그 (쉼표구분) |
+| consent_sms/email | BOOLEAN | DEFAULT false | 수신동의 |
+| main_assignee_id | INTEGER | FK → admins.id | 담당자 |
+| expected_revenue | INTEGER | DEFAULT 0 | 예상매출 |
+| is_blacklisted | BOOLEAN | DEFAULT false | 블랙리스트 |
+
+### crm_consultations - 상담 관리
+| Column | Type | Description |
+|--------|------|-------------|
+| id | SERIAL | 상담 ID |
+| lead_id/customer_id | INTEGER | 연결된 리드/고객 |
+| consult_type | VARCHAR | 유형 (phone/visit/kakao/email/video) |
+| content/summary | TEXT | 상담 내용/요약 |
+| needs/budget | VARCHAR | 고객 니즈/예산 |
+| result | VARCHAR | 결과 (pending/success/hold/fail) |
+
+### crm_followups - 후속 일정
+| Column | Type | Description |
+|--------|------|-------------|
+| id | SERIAL | 일정 ID |
+| title | VARCHAR | 제목 |
+| task_type | VARCHAR | 유형 (call/quote/revisit/document/contract) |
+| lead_id/customer_id | INTEGER | 연결된 리드/고객 |
+| status | VARCHAR | 상태 (pending/completed/cancelled) |
+| priority | VARCHAR | 우선순위 |
+| due_date | TIMESTAMP | 마감일 |
+
+### crm_lead_status_history - 리드 상태 변경 이력
+| Column | Type | Description |
+|--------|------|-------------|
+| id | SERIAL | 이력 ID |
+| lead_id | INTEGER | 리드 ID |
+| from_status/to_status | VARCHAR | 변경 전/후 상태 |
+| changed_by | INTEGER | 변경자 |
+
+### crm_status_codes - 상태 코드 관리
+| Column | Type | Description |
+|--------|------|-------------|
+| id | SERIAL | 코드 ID |
+| code | VARCHAR | 코드 (unique) |
+| label | VARCHAR | 라벨 |
+| color | VARCHAR | 색상 |
+| is_default/is_final | BOOLEAN | 기본값/종료상태 |
+
+### crm_deals - 영업 파이프라인
+| Column | Type | Description |
+|--------|------|-------------|
+| id | SERIAL | 딜 ID |
+| title | VARCHAR | 딜 제목 |
+| customer_id/lead_id | INTEGER | 연결된 고객/리드 |
+| stage | VARCHAR | 단계 |
+| amount | INTEGER | 금액 |
+| probability | INTEGER | 확률(%) |
+| won_lost | VARCHAR | Won/Lost |
+| lost_reason | VARCHAR | 실패 사유 |
+
+### crm_quotes - 견적 관리
+| Column | Type | Description |
+|--------|------|-------------|
+| id | SERIAL | 견적 ID |
+| deal_id | INTEGER | 딜 ID |
+| quote_number | VARCHAR | 견적 번호 (Q-YYYY-XXX) |
+| items | TEXT | 항목 JSON |
+| total_amount | INTEGER | 총액 |
+| status | VARCHAR | 상태 (draft/sent/accepted/rejected) |
+
+### crm_contracts - 계약 관리
+| Column | Type | Description |
+|--------|------|-------------|
+| id | SERIAL | 계약 ID |
+| deal_id | INTEGER | 딜 ID |
+| contract_number | VARCHAR | 계약 번호 (C-YYYY-XXX) |
+| amount | INTEGER | 금액 |
+| start_date/end_date | TIMESTAMP | 계약 기간 |
+| status | VARCHAR | 상태 (draft/active/completed/cancelled) |
+
+### crm_campaigns - 캠페인 관리
+| Column | Type | Description |
+|--------|------|-------------|
+| id | SERIAL | 캠페인 ID |
+| name | VARCHAR | 캠페인명 |
+| campaign_type | VARCHAR | 유형 (email/sms/push) |
+| status | VARCHAR | 상태 (draft/scheduled/sent/completed) |
+| sent/open/click/convert_count | INTEGER | 발송/오픈/클릭/전환 수 |
