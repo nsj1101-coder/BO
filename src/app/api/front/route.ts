@@ -33,10 +33,29 @@ export async function GET(req: NextRequest) {
 
   if (!page) return NextResponse.json({ error: "Page not found" }, { status: 404 });
 
+  // Preload source template banners for clones
+  const sourceIds = page.sections
+    .filter((s) => s.template.sourceId && s.template.banners.length === 0)
+    .map((s) => s.template.sourceId as number);
+
+  const sourceBanners: Record<number, typeof page.sections[0]["template"]["banners"]> = {};
+  if (sourceIds.length > 0) {
+    const banners = await prisma.banner.findMany({ where: { templateId: { in: sourceIds }, isActive: true } });
+    banners.forEach((b) => {
+      if (!sourceBanners[b.templateId]) sourceBanners[b.templateId] = [];
+      sourceBanners[b.templateId].push(b);
+    });
+  }
+
   const sections = page.sections.map((s) => {
     let html = s.htmlContent || s.template.htmlContent;
 
-    s.template.banners
+    // Use template's own banners, or fall back to source template's banners
+    const banners = s.template.banners.length > 0
+      ? s.template.banners
+      : (s.template.sourceId ? sourceBanners[s.template.sourceId] || [] : []);
+
+    banners
       .filter((b) => b.isActive)
       .forEach((b) => {
         const tag = `{{BANNER:${b.slotKey}}}`;
