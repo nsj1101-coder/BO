@@ -19,6 +19,11 @@ model Admin {
   updatedAt   DateTime @updatedAt @map("updated_at")
 
   logs AdminLog[]
+  assignedLeads      CrmLead[]          @relation("LeadAssignee")
+  assignedCustomers  CrmCustomer[]      @relation("CustomerAssignee")
+  assignedConsults   CrmConsultation[]  @relation("ConsultAssignee")
+  assignedFollowups  CrmFollowup[]      @relation("FollowupAssignee")
+  assignedDeals      CrmDeal[]          @relation("DealAssignee")
 
   @@map("admins")
 }
@@ -311,4 +316,223 @@ model Reservation {
   updatedAt DateTime @updatedAt @map("updated_at")
 
   @@map("reservations")
+}
+
+// ============================================
+// CRM Models
+// ============================================
+
+model CrmLead {
+  id              Int      @id @default(autoincrement())
+  leadType        String   @default("inquiry") @map("lead_type")
+  customerName    String   @map("customer_name")
+  phone           String   @default("")
+  email           String   @default("")
+  companyName     String   @default("") @map("company_name")
+  content         String   @default("") @db.Text
+  landingPageUrl  String   @default("") @map("landing_page_url")
+  referrerUrl     String   @default("") @map("referrer_url")
+  utmSource       String   @default("") @map("utm_source")
+  utmMedium       String   @default("") @map("utm_medium")
+  utmCampaign     String   @default("") @map("utm_campaign")
+  statusCode      String   @default("new") @map("status_code")
+  priority        String   @default("normal")
+  assigneeId      Int?     @map("assignee_id")
+  customerId      Int?     @map("customer_id")
+  nextActionDate  DateTime? @map("next_action_date")
+  sourceFormId    Int?     @map("source_form_id")
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+
+  customer        CrmCustomer? @relation(fields: [customerId], references: [id])
+  assignee        Admin?       @relation("LeadAssignee", fields: [assigneeId], references: [id])
+  consultations   CrmConsultation[]
+  followups       CrmFollowup[]
+  statusHistory   CrmLeadStatusHistory[]
+  deals           CrmDeal[]
+
+  @@map("crm_leads")
+}
+
+model CrmCustomer {
+  id              Int      @id @default(autoincrement())
+  customerType    String   @default("individual") @map("customer_type")
+  name            String
+  companyName     String   @default("") @map("company_name")
+  phone           String   @default("")
+  email           String   @default("")
+  birthOrBizNo    String   @default("") @map("birth_or_biz_no")
+  grade           String   @default("일반")
+  tags            String   @default("") @db.Text
+  consentSms      Boolean  @default(false) @map("consent_sms")
+  consentEmail    Boolean  @default(false) @map("consent_email")
+  mainAssigneeId  Int?     @map("main_assignee_id")
+  currentStatus   String   @default("active") @map("current_status")
+  expectedRevenue Int      @default(0) @map("expected_revenue")
+  isBlacklisted   Boolean  @default(false) @map("is_blacklisted")
+  memo            String   @default("") @db.Text
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+
+  mainAssignee    Admin?   @relation("CustomerAssignee", fields: [mainAssigneeId], references: [id])
+  leads           CrmLead[]
+  consultations   CrmConsultation[]
+  followups       CrmFollowup[]
+  deals           CrmDeal[]
+
+  @@map("crm_customers")
+}
+
+model CrmConsultation {
+  id              Int      @id @default(autoincrement())
+  leadId          Int?     @map("lead_id")
+  customerId      Int?     @map("customer_id")
+  consultType     String   @default("phone") @map("consult_type")
+  assigneeId      Int?     @map("assignee_id")
+  content         String   @default("") @db.Text
+  summary         String   @default("") @db.Text
+  needs           String   @default("")
+  budget          String   @default("")
+  desiredDate     String   @default("") @map("desired_date")
+  requestedService String  @default("") @map("requested_service")
+  result          String   @default("pending")
+  failReason      String   @default("") @map("fail_reason")
+  nextAction      String   @default("") @map("next_action")
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+
+  lead            CrmLead?    @relation(fields: [leadId], references: [id])
+  customer        CrmCustomer? @relation(fields: [customerId], references: [id])
+  assignee        Admin?       @relation("ConsultAssignee", fields: [assigneeId], references: [id])
+
+  @@map("crm_consultations")
+}
+
+model CrmFollowup {
+  id              Int      @id @default(autoincrement())
+  title           String
+  taskType        String   @default("call") @map("task_type")
+  leadId          Int?     @map("lead_id")
+  customerId      Int?     @map("customer_id")
+  assigneeId      Int?     @map("assignee_id")
+  status          String   @default("pending")
+  priority        String   @default("normal")
+  dueDate         DateTime? @map("due_date")
+  completedAt     DateTime? @map("completed_at")
+  memo            String   @default("") @db.Text
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+
+  lead            CrmLead?    @relation(fields: [leadId], references: [id])
+  customer        CrmCustomer? @relation(fields: [customerId], references: [id])
+  assignee        Admin?       @relation("FollowupAssignee", fields: [assigneeId], references: [id])
+
+  @@map("crm_followups")
+}
+
+model CrmLeadStatusHistory {
+  id              Int      @id @default(autoincrement())
+  leadId          Int      @map("lead_id")
+  fromStatus      String   @map("from_status")
+  toStatus        String   @map("to_status")
+  changedBy       Int?     @map("changed_by")
+  memo            String   @default("")
+  createdAt       DateTime @default(now()) @map("created_at")
+
+  lead            CrmLead  @relation(fields: [leadId], references: [id], onDelete: Cascade)
+
+  @@map("crm_lead_status_history")
+}
+
+model CrmStatusCode {
+  id              Int      @id @default(autoincrement())
+  code            String   @unique
+  label           String
+  color           String   @default("#666")
+  sortOrder       Int      @default(0) @map("sort_order")
+  isDefault       Boolean  @default(false) @map("is_default")
+  isFinal         Boolean  @default(false) @map("is_final")
+  createdAt       DateTime @default(now()) @map("created_at")
+
+  @@map("crm_status_codes")
+}
+
+model CrmDeal {
+  id              Int      @id @default(autoincrement())
+  title           String
+  customerId      Int?     @map("customer_id")
+  leadId          Int?     @map("lead_id")
+  assigneeId      Int?     @map("assignee_id")
+  stage           String   @default("new")
+  amount          Int      @default(0)
+  probability     Int      @default(0)
+  expectedCloseDate DateTime? @map("expected_close_date")
+  wonLost         String?  @map("won_lost")
+  lostReason      String   @default("") @map("lost_reason")
+  memo            String   @default("") @db.Text
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+
+  customer        CrmCustomer? @relation(fields: [customerId], references: [id])
+  lead            CrmLead?     @relation(fields: [leadId], references: [id])
+  assignee        Admin?       @relation("DealAssignee", fields: [assigneeId], references: [id])
+  quotes          CrmQuote[]
+  contracts       CrmContract[]
+
+  @@map("crm_deals")
+}
+
+model CrmQuote {
+  id              Int      @id @default(autoincrement())
+  dealId          Int      @map("deal_id")
+  quoteNumber     String   @unique @map("quote_number")
+  title           String
+  items           String   @default("[]") @db.Text
+  totalAmount     Int      @default(0) @map("total_amount")
+  validUntil      DateTime? @map("valid_until")
+  status          String   @default("draft")
+  memo            String   @default("") @db.Text
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+
+  deal            CrmDeal  @relation(fields: [dealId], references: [id], onDelete: Cascade)
+
+  @@map("crm_quotes")
+}
+
+model CrmContract {
+  id              Int      @id @default(autoincrement())
+  dealId          Int      @map("deal_id")
+  contractNumber  String   @unique @map("contract_number")
+  title           String
+  amount          Int      @default(0)
+  startDate       DateTime? @map("start_date")
+  endDate         DateTime? @map("end_date")
+  status          String   @default("draft")
+  memo            String   @default("") @db.Text
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+
+  deal            CrmDeal  @relation(fields: [dealId], references: [id], onDelete: Cascade)
+
+  @@map("crm_contracts")
+}
+
+model CrmCampaign {
+  id              Int      @id @default(autoincrement())
+  name            String
+  campaignType    String   @default("email") @map("campaign_type")
+  status          String   @default("draft")
+  targetSegment   String   @default("") @map("target_segment") @db.Text
+  content         String   @default("") @db.Text
+  sentCount       Int      @default(0) @map("sent_count")
+  openCount       Int      @default(0) @map("open_count")
+  clickCount      Int      @default(0) @map("click_count")
+  convertCount    Int      @default(0) @map("convert_count")
+  scheduledAt     DateTime? @map("scheduled_at")
+  sentAt          DateTime? @map("sent_at")
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+
+  @@map("crm_campaigns")
 }
