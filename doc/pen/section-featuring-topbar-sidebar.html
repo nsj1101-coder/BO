@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Featuring - TopBar & Sidebar</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/variable/woff2/SUIT-Variable.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css">
+<style>
+  * { font-family: 'SUIT Variable', 'Pretendard Variable', sans-serif; }
+</style>
+</head>
+<body class="bg-gray-50">
+
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 left-0 w-full h-[100px] bg-white/80 backdrop-blur border-b border-gray-300 z-50 flex items-center px-8">
+  <!-- Left: Logo -->
+  <div class="flex items-center gap-3 shrink-0">
+    <img src="img/featuring/sN0VN.png" alt="Logo" class="w-[50px] h-[50px]">
+    <span class="text-[32px] font-[700] text-black leading-none">featuring</span>
+  </div>
+
+  <!-- Center: Search -->
+  <div class="flex-1 flex justify-center">
+    <div class="w-[360px] h-[48px] bg-white border border-gray-300 rounded-full flex items-center px-4 gap-2">
+      <img src="img/featuring/D75iq.png" alt="Search" class="w-[24px] h-[24px] shrink-0">
+      <input type="text" placeholder="계정 및 채널 검색" class="w-full bg-transparent outline-none text-[16px] font-[500] text-black placeholder:text-gray-400">
+    </div>
+  </div>
+
+  <!-- Right: Buttons -->
+  <div class="flex items-center gap-3 shrink-0">
+    <button class="relative h-[44px] bg-white border border-gray-300 rounded-full flex items-center gap-2 px-4 text-[16px] font-[700] text-black hover:bg-gray-50 transition">
+      <img src="img/featuring/EOPEY.png" alt="알림" class="w-[20px] h-[20px]">
+      <span>알림</span>
+      <span class="absolute -top-0.5 -right-0.5 w-[10px] h-[10px] bg-red-500 rounded-full border-2 border-white"></span>
+    </button>
+    <button class="h-[44px] bg-white border border-gray-300 rounded-full flex items-center gap-2 px-4 text-[16px] font-[700] text-black hover:bg-gray-50 transition">
+      <img src="img/featuring/1cmtB.png" alt="Isla" class="w-[20px] h-[20px]">
+      <span>Isla</span>
+    </button>
+    <button class="h-[44px] bg-white border border-gray-300 rounded-full flex items-center gap-2 px-4 text-[16px] font-[700] text-black hover:bg-gray-50 transition">
+      <img src="img/featuring/eZ8Ja.png" alt="+4" class="w-[20px] h-[20px]">
+      <span>+4</span>
+    </button>
+  </div>
+</header>
+
+<!-- Left Sidebar -->
+<aside id="sidebar" class="fixed left-[25px] top-[100px] w-[230px] h-[calc(100vh-100px)] flex flex-col py-4 z-40 transition-all duration-300" data-collapsed="false">
+
+  <!-- Collapse Toggle -->
+  <button id="collapseBtn" class="flex items-center gap-1.5 px-4 mb-3 text-[12px] font-[500] text-gray-500 hover:text-gray-700 transition self-start">
+    <img src="img/featuring/MeD98.png" alt="접기" class="w-[16px] h-[16px] transition-transform duration-300" id="collapseIcon">
+    <span class="collapse-label">접기</span>
+  </button>
+
+  <!-- Menu Section 1 -->
+  <nav class="flex flex-col gap-1 px-0">
+    <button class="menu-item" data-active="false">
+      <div class="icon-circle"><img src="img/featuring/ag6au.png" alt="" class="w-[24px] h-[24px]"></div>
+      <span class="menu-label">대시보드</span>
+    </button>
+    <button class="menu-item" data-active="false">
+      <div class="icon-circle"><img src="img/featuring/oT6Kl.png" alt="" class="w-[24px] h-[24px]"></div>
+      <span class="menu-label">인플루언서 찾기</span>
+    </button>
+    <button class="menu-item" data-active="true">
+      <div class="icon-circle"><img src="img/featuring/Pcyed.png" alt="" class="w-[24px] h-[24px]"></div>
+      <span class="menu-label">인플루언서 관리</span>
+    </button>
+    <button class="menu-item" data-active="false">
+      <div class="icon-circle"><img src="img/featuring/mlWEm.png" alt="" class="w-[24px] h-[24px]"></div>
+      <span class="menu-label">인플루언서 랭킹</span>
+    </button>
+    <button class="menu-item" data-active="false">
+      <div class="icon-circle"><img src="img/featuring/v9UaU.png" alt="" class="w-[24px] h-[24px]"></div>
+      <span class="menu-label">AI 리스트업</span>
+    </button>
+  </nav>
+
+  <!-- Divider -->
+  <div class="mx-[15px] my-[10px] border-t border-b border-[#e5e7eb]" style="width:200px;"></div>
+
+  <!-- Menu Section 2 -->
+  <nav class="flex flex-col gap-1 px-0">
+    <button class="menu-item" data-active="false">
+      <div class="icon-circle"><img src="img/featuring/emJqZ.png" alt="" class="w-[24px] h-[24px]"></div>
+      <span class="menu-label">캠페인 관리</span>
+    </button>
+    <button class="menu-item" data-active="false" data-badge="2">
+      <div class="icon-circle"><img src="img/featuring/38fPt.png" alt="" class="w-[24px] h-[24px]"></div>
+      <span class="menu-label">메시지 관리</span>
+      <span class="badge">2</span>
+    </button>
+    <button class="menu-item" data-active="false" data-badge="2">
+      <div class="icon-circle"><img src="img/featuring/OOdDW.png" alt="" class="w-[24px] h-[24px]"></div>
+      <span class="menu-label">DM/이메일 관리</span>
+      <span class="badge">2</span>
+    </button>
+  </nav>
+
+  <!-- Spacer -->
+  <div class="flex-1"></div>
+
+  <!-- Bottom: Footer Links -->
+  <div class="flex flex-col gap-1 px-4 mb-2">
+    <span class="text-[20px] font-[700] text-black cursor-pointer hover:text-[#4332f8] transition menu-label">서비스 가이드</span>
+    <span class="text-[20px] font-[700] text-black cursor-pointer hover:text-[#4332f8] transition menu-label">인사이트/블로그</span>
+  </div>
+
+  <!-- Logout -->
+  <nav class="flex flex-col gap-1 px-0 mb-2">
+    <button class="menu-item" data-active="false">
+      <div class="icon-circle"><img src="img/featuring/VnEvQ.png" alt="" class="w-[24px] h-[24px]"></div>
+      <span class="menu-label">로그아웃</span>
+    </button>
+  </nav>
+</aside>
+
+<style>
+  .menu-item {
+    width: 230px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 16px;
+    border-radius: 9999px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #000;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    white-space: nowrap;
+  }
+  .menu-item:hover:not([data-active="true"]) {
+    background: #f3f4f6;
+  }
+  .menu-item[data-active="true"] {
+    background: #4332f8;
+    color: #fff;
+    box-shadow: 0 4px 38.5px rgba(67, 50, 248, 0.2);
+  }
+  .icon-circle {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    background: #fff;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .badge {
+    width: 24px;
+    height: 24px;
+    background: #4332f8;
+    color: #fff;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 700;
+    margin-left: auto;
+  }
+
+  /* Collapsed state */
+  #sidebar.collapsed {
+    width: 68px;
+  }
+  #sidebar.collapsed .menu-item {
+    width: 60px;
+    justify-content: center;
+    padding: 0;
+  }
+  #sidebar.collapsed .menu-label,
+  #sidebar.collapsed .collapse-label,
+  #sidebar.collapsed .badge {
+    display: none;
+  }
+  #sidebar.collapsed .icon-circle {
+    margin: 0;
+  }
+  #sidebar.collapsed #collapseBtn {
+    justify-content: center;
+    padding: 0 16px;
+  }
+  #sidebar.collapsed #collapseIcon {
+    transform: rotate(180deg);
+  }
+  #sidebar.collapsed .menu-item[data-active="true"] {
+    width: 60px;
+  }
+</style>
+
+<script>
+document.getElementById('collapseBtn').addEventListener('click', function() {
+  const sidebar = document.getElementById('sidebar');
+  const isCollapsed = sidebar.getAttribute('data-collapsed') === 'true';
+  if (isCollapsed) {
+    sidebar.classList.remove('collapsed');
+    sidebar.setAttribute('data-collapsed', 'false');
+  } else {
+    sidebar.classList.add('collapsed');
+    sidebar.setAttribute('data-collapsed', 'true');
+  }
+});
+
+document.querySelectorAll('.menu-item').forEach(function(item) {
+  item.addEventListener('click', function() {
+    document.querySelectorAll('.menu-item').forEach(function(el) {
+      el.setAttribute('data-active', 'false');
+    });
+    this.setAttribute('data-active', 'true');
+  });
+});
+</script>
+
+</body>
+</html>

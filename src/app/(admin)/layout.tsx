@@ -11,15 +11,19 @@ interface User {
   canManageAdmins: boolean;
 }
 
+const SvgIcon = ({ d }: { d: string }) => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" style={{ display: "block" }}><path d={d} /></svg>
+);
+
 const menuItems = [
-  { label: "대시보드", href: "/dashboard", icon: "📊" },
-  { label: "디자인 설정", icon: "🎨", children: [
+  { label: "대시보드", href: "/dashboard", icon: <SvgIcon d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1" /> },
+  { label: "디자인 설정", icon: <SvgIcon d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zm0 8a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zm10 0a1 1 0 011-1h4a1 1 0 011 1v6a1 1 0 01-1 1h-4a1 1 0 01-1-1v-6z" />, children: [
     { label: "메인 페이지", href: "/design/main-page" },
     { label: "서브 페이지", href: "/design/sub-page" },
     { label: "템플릿", href: "/design/templates" },
     { label: "팝업", href: "/popups" },
   ]},
-  { label: "운영 관리", icon: "📋", children: [
+  { label: "운영 관리", icon: <SvgIcon d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01m-.01 4h.01" />, children: [
     { label: "게시판", href: "/boards" },
     { label: "FAQ", href: "/faq" },
     { label: "상담 신청", href: "/consultations" },
@@ -27,11 +31,11 @@ const menuItems = [
     { label: "예약", href: "/reservations" },
     { label: "계정 관리", href: "/admin-accounts" },
   ]},
-  { label: "회원 관리", icon: "👥", children: [
+  { label: "회원 관리", icon: <SvgIcon d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />, children: [
     { label: "가입 설정", href: "/members/settings" },
     { label: "회원 리스트", href: "/members" },
   ]},
-  { label: "설정", href: "/settings", icon: "⚙️" },
+  { label: "설정", href: "/settings", icon: <SvgIcon d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /> },
 ];
 
 const allMenuItems = menuItems.flatMap((m) =>
@@ -92,14 +96,13 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   };
 
   if (!user) return (
-    <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", background: "#fff" }}>
-      <div style={{ width: 32, height: 32, border: "3px solid #4332f8", borderTop: "3px solid transparent", borderRadius: "50%", animation: "spin 1s linear infinite" }} />
-      <style>{`@keyframes spin{to{transform:rotate(360deg)}}`}</style>
+    <div className="min-h-screen flex items-center justify-center bg-white">
+      <div className="w-8 h-8 border-3 border-[#4332f8] border-t-transparent rounded-full animate-spin" />
     </div>
   );
 
   const pageTitle = menuItems.flatMap((m) => (m.children ? m.children : [m])).find((m) => pathname === m.href || pathname.startsWith(m.href + "/"))?.label ?? "";
-  const sideW = collapsed ? 60 : 230;
+  const sideW = collapsed ? 65 : 230;
 
   return (
     <div style={{ minHeight: "100vh", fontFamily: "'Pretendard', sans-serif", background: "#fff" }}>
@@ -163,7 +166,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                   textDecoration: "none", whiteSpace: "nowrap", justifyContent: collapsed ? "center" : "flex-start",
                   transition: "all 0.15s ease",
                 }}>
-                  <span style={{ width: 36, height: 36, borderRadius: 100, background: active ? "#fff" : "#f3f4f6", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginRight: collapsed ? 0 : 12, fontSize: 16, transition: "margin 0.2s" }}>{item.icon}</span>
+                  <span style={{ width: 36, height: 36, borderRadius: 100, background: active ? "#fff" : "#f3f4f6", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginRight: collapsed ? 0 : 12, color: "#999", lineHeight: 0, transition: "margin 0.2s" }}>{item.icon}</span>
                   {!collapsed && <span style={{ fontSize: 15, fontWeight: 600, color: active ? "#fff" : "#333" }}>{item.label}</span>}
                 </Link>
               );
@@ -174,14 +177,23 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             return (
               <div key={item.label}>
                 <button
-                  onClick={() => setOpenMenus((prev) => ({ ...prev, [item.label]: !prev[item.label] }))}
+                  onClick={() => {
+                    if (collapsed && visibleChildren && visibleChildren.length > 0) {
+                      router.push(visibleChildren[0].href);
+                    } else {
+                      setOpenMenus((prev) => ({ ...prev, [item.label]: !prev[item.label] }));
+                    }
+                  }}
                   style={{
                     display: "flex", alignItems: "center", width: "100%", height: 48, padding: collapsed ? "0" : "0 12px",
-                    borderRadius: 100, background: "transparent", border: "none", cursor: "pointer",
+                    borderRadius: 100, border: "none", cursor: "pointer",
+                    background: collapsed && hasActiveChild ? "#4332f8" : "transparent",
+                    boxShadow: collapsed && hasActiveChild ? "0 4px 20px rgba(67,50,248,0.2)" : "none",
                     justifyContent: collapsed ? "center" : "flex-start", whiteSpace: "nowrap",
+                    transition: "all 0.15s ease",
                   }}
                 >
-                  <span style={{ width: 36, height: 36, borderRadius: 100, background: hasActiveChild ? "rgba(67,50,248,0.1)" : "#f3f4f6", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginRight: collapsed ? 0 : 12, fontSize: 16, transition: "margin 0.2s" }}>{item.icon}</span>
+                  <span style={{ width: 36, height: 36, borderRadius: 100, background: collapsed && hasActiveChild ? "#fff" : hasActiveChild ? "rgba(67,50,248,0.1)" : "#f3f4f6", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginRight: collapsed ? 0 : 12, color: "#999", lineHeight: 0, transition: "margin 0.2s" }}>{item.icon}</span>
                   {!collapsed && (
                     <>
                       <span style={{ fontSize: 15, fontWeight: 600, color: hasActiveChild ? "#4332f8" : "#333", flex: 1, textAlign: "left" }}>{item.label}</span>
@@ -219,7 +231,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       <main style={{ marginLeft: sideW, marginTop: 64, minHeight: "calc(100vh - 64px)", transition: "margin-left 0.2s ease" }}>
         <div style={{ padding: "24px 32px 8px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <h2 style={{ fontSize: 18, fontWeight: 700, color: "#111", margin: 0 }}>{pageTitle}</h2>
-          <span style={{ fontSize: 12, color: "#bbb" }}>{new Date().toLocaleDateString("ko-KR", { year: "numeric", month: "long", day: "numeric" })}</span>
+          <span style={{ fontSize: 12, color: "#bbb" }} suppressHydrationWarning>{new Date().toLocaleDateString("ko-KR", { year: "numeric", month: "long", day: "numeric" })}</span>
         </div>
         <div style={{ padding: "16px 32px 32px" }}>{children}</div>
       </main>

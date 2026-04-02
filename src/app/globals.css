@@ -24,4 +24,15 @@
     color: var(--color-primary);
     -webkit-font-smoothing: antialiased;
   }
+
+  /* 테이블/리스트 본문 텍스트 검정 강제 */
+  table tbody td {
+    color: #111 !important;
+  }
+  table tbody td a {
+    color: #4332f8 !important;
+  }
+  table thead th {
+    color: #888 !important;
+  }
 }
