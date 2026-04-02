@@ -76,6 +76,8 @@ export default function IndexPage() {
         <div key={s.id} dangerouslySetInnerHTML={{ __html: s.html }} />
       ))}
 
+      <script src="/api/track/script" defer />
+
       {/* Popups */}
       {activePopups.map((popup) => (
         <div key={popup.id} style={{ position: "fixed", inset: 0, zIndex: 9999, display: "flex", alignItems: "center", justifyContent: "center", background: "rgba(0,0,0,0.5)", backdropFilter: "blur(4px)" }}>

@@ -60,6 +60,15 @@ const crmMenuItems = [
     { label: "캠페인", href: "/crm/campaigns" },
     { label: "분석/리포트", href: "/crm/analytics" },
   ]},
+  { label: "홈페이지 분석", icon: <SvgIcon d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />, children: [
+    { label: "트래픽 개요", href: "/crm/hp-analytics" },
+    { label: "실시간 접속", href: "/crm/hp-realtime" },
+    { label: "페이지 분석", href: "/crm/hp-pages" },
+    { label: "방문자", href: "/crm/hp-visitors" },
+    { label: "이벤트", href: "/crm/hp-events" },
+    { label: "유입 분석", href: "/crm/hp-heatmap" },
+    { label: "회원 추적", href: "/crm/hp-members" },
+  ]},
   { label: "환경설정", icon: <SvgIcon d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />, children: [
     { label: "사이트 설정", href: "/site-config" },
     { label: "API 설정", href: "/settings" },
@@ -73,7 +82,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const [user, setUser] = useState<User | null>(null);
   const [collapsed, setCollapsed] = useState(false);
   const [mode, setMode] = useState<"CMS" | "CRM">("CMS");
-  const [openMenus, setOpenMenus] = useState<Record<string, boolean>>({ "디자인 설정": true, "운영 관리": true, "회원 관리": true, "환경설정": true, "고객 관리": true, "영업 관리": true, "마케팅": true, "일정/업무": true, "분석/리포트": true });
+  const [openMenus, setOpenMenus] = useState<Record<string, boolean>>({ "디자인 설정": true, "운영 관리": true, "회원 관리": true, "환경설정": true, "리드 CRM": true, "세일즈 CRM": true, "마케팅 CRM": true, "홈페이지 분석": true });
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const searchInputRef = useRef<HTMLInputElement>(null);

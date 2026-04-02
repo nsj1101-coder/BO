@@ -536,3 +536,86 @@ model CrmCampaign {
 
   @@map("crm_campaigns")
 }
+
+// ============================================
+// Homepage Analytics / Tracking
+// ============================================
+
+model TrackSession {
+  id            Int      @id @default(autoincrement())
+  sessionId     String   @unique @map("session_id")
+  visitorId     String   @map("visitor_id")
+  memberId      Int?     @map("member_id")
+  ip            String   @default("")
+  userAgent     String   @default("") @map("user_agent") @db.Text
+  device        String   @default("")
+  browser       String   @default("")
+  os            String   @default("")
+  country       String   @default("")
+  city          String   @default("")
+  referrer      String   @default("")
+  utmSource     String   @default("") @map("utm_source")
+  utmMedium     String   @default("") @map("utm_medium")
+  utmCampaign   String   @default("") @map("utm_campaign")
+  landingPage   String   @default("") @map("landing_page")
+  exitPage      String   @default("") @map("exit_page")
+  pageCount     Int      @default(0) @map("page_count")
+  duration      Int      @default(0)
+  isNewVisitor  Boolean  @default(true) @map("is_new_visitor")
+  startedAt     DateTime @default(now()) @map("started_at")
+  endedAt       DateTime? @map("ended_at")
+
+  pageViews     TrackPageView[]
+  events        TrackEvent[]
+
+  @@map("track_sessions")
+}
+
+model TrackPageView {
+  id            Int      @id @default(autoincrement())
+  sessionId     String   @map("session_id")
+  visitorId     String   @map("visitor_id")
+  memberId      Int?     @map("member_id")
+  path          String
+  title         String   @default("")
+  referrer      String   @default("")
+  duration      Int      @default(0)
+  scrollDepth   Int      @default(0) @map("scroll_depth")
+  createdAt     DateTime @default(now()) @map("created_at")
+
+  session       TrackSession @relation(fields: [sessionId], references: [sessionId], onDelete: Cascade)
+
+  @@map("track_page_views")
+}
+
+model TrackEvent {
+  id            Int      @id @default(autoincrement())
+  sessionId     String   @map("session_id")
+  visitorId     String   @map("visitor_id")
+  memberId      Int?     @map("member_id")
+  eventType     String   @map("event_type")
+  eventName     String   @map("event_name")
+  path          String   @default("")
+  target        String   @default("")
+  value         String   @default("")
+  metadata      String   @default("{}") @db.Text
+  createdAt     DateTime @default(now()) @map("created_at")
+
+  session       TrackSession @relation(fields: [sessionId], references: [sessionId], onDelete: Cascade)
+
+  @@map("track_events")
+}
+
+model TrackHeatmapClick {
+  id            Int      @id @default(autoincrement())
+  path          String
+  x             Int
+  y             Int
+  viewportW     Int      @map("viewport_w")
+  viewportH     Int      @map("viewport_h")
+  target        String   @default("")
+  sessionId     String   @map("session_id")
+  createdAt     DateTime @default(now()) @map("created_at")
+
+  @@map("track_heatmap_clicks")
+}
