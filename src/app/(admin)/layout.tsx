@@ -92,7 +92,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   };
 
   if (!user) return (
-    <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", background: "#f9fafb" }}>
+    <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", background: "#fff" }}>
       <div style={{ width: 32, height: 32, border: "3px solid #4332f8", borderTop: "3px solid transparent", borderRadius: "50%", animation: "spin 1s linear infinite" }} />
       <style>{`@keyframes spin{to{transform:rotate(360deg)}}`}</style>
     </div>
@@ -102,7 +102,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const sideW = collapsed ? 60 : 230;
 
   return (
-    <div style={{ minHeight: "100vh", fontFamily: "'Pretendard', sans-serif", background: "#f9fafb" }}>
+    <div style={{ minHeight: "100vh", fontFamily: "'Pretendard', sans-serif", background: "#fff" }}>
 
       {/* ===== Top Header ===== */}
       <header style={{ position: "fixed", top: 0, left: 0, right: 0, height: 64, background: "#fff", borderBottom: "1px solid #e5e7eb", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 24px", zIndex: 50 }}>
