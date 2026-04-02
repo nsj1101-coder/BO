@@ -43,6 +43,14 @@ main a {
   color: #4332f8 !important;
 }
 
+/* text-white 클래스가 있는 링크/버튼은 흰색 유지 */
+main a.text-white,
+main button.text-white,
+main a[class*="text-white"],
+main button[class*="text-white"] {
+  color: #fff !important;
+}
+
 input::placeholder, textarea::placeholder {
   color: #bbb !important;
 }
